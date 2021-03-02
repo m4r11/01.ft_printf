@@ -6,13 +6,15 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/28 20:13:21 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/02 12:59:12 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/03/02 16:53:45 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <stdlib.h>
+
 #define MAXARGS 31
 
 void debug_str(const char *s, char *name);
@@ -50,7 +52,26 @@ int	ft_strlen(char *str)
 }
 
 
-int ft_test(int count, ...)
+
+int ft_test(char *format, ...)
+{
+    va_list args, args2;
+	char **array_arg;
+    va_start(args, format);
+	va_copy(args2, args);
+	
+	while(&args2)
+    {
+		ft_putstr(args2);
+		ft_putstr(va_arg(args2, char *));
+		ft_putstr("\nBreak here\n");
+		/* ft_putstr(va_arg(args, char *)); */
+    }
+    va_end(args);
+return(0);
+}
+
+/* int ft_test(int count, ...)
 {
     va_list args;
     va_start(args, count);
@@ -62,10 +83,10 @@ int ft_test(int count, ...)
     }
     va_end(args);
 return(0);
-}
+} */
 
 int main()
 {
-    ft_test(2, "catarina", "hello");
+    ft_test("catarina", "hello", "ola");
     return (0);
 }
