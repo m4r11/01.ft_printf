@@ -1,0 +1,6 @@
+[submodule "simple_debug"]
+	path = simple_debug
+	url = https://github.com/m4r11/simple_debug
+[submodule "/Users/mvaldeta/Documents/42Cursus/01.ft_printf/simple_debug"]
+	path = /Users/mvaldeta/Documents/42Cursus/01.ft_printf/simple_debug
+	url = https://github.com/m4r11/simple_debug
