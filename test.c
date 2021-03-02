@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaldeta <mvaldeta@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/28 20:13:21 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/01 09:50:24 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/03/02 12:59:12 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,32 +15,57 @@
 #include <stdio.h>
 #define MAXARGS 31
 
-int ft_strlen(const char *s)
-{
-    int i;
+void debug_str(const char *s, char *name);
+void debug_number(int i, char *name);
 
-    i = 0;
-    while (*s)
-        i++;
-    return (i);
+
+void	ft_putc(char c)
+{
+	write(1, &c, 1);
 }
 
-int ft_test(const char *fmt, ...)
+void	ft_putstr(char *str)
+{
+	int i;
+
+	i = 0;
+	while ((str[i]) != '\0')
+	{
+		ft_putc(str[i]);
+		++i;
+	}
+}
+
+int	ft_strlen(char *str)
+{
+	int x;
+
+	x = 0;
+	while (str[x] != '\0')
+	{
+		++x;
+	}
+    debug_number(x, "X");
+	return (x);
+}
+
+
+int ft_test(int count, ...)
 {
     va_list args;
-    va_start(args, fmt);
+    va_start(args, count);
 
-    while (*fmt != '\0')
+    while (count--)
     {
-        int i = va_arg(args, int);
-        printf("%d\n", i);
-        fmt++;
+        ft_putstr(va_arg(args, char *));
+		ft_putstr("\n");
     }
     va_end(args);
+return(0);
 }
 
 int main()
 {
-    ft_test("catarina", 8);
+    ft_test(2, "catarina", "hello");
     return (0);
 }
