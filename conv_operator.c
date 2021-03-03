@@ -1,43 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utilities.c                                     :+:      :+:    :+:   */
+/*   conv_operator.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/02 17:20:24 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/03 11:50:39 by mvaldeta         ###   ########.fr       */
+/*   Created: 2021/03/03 09:22:56 by mvaldeta          #+#    #+#             */
+/*   Updated: 2021/03/03 09:31:29 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void ft_putc(char c)
+void    (*get_converter(t_converter *arr, char c)) (char *s)
 {
-	write(1, &c, 1);
-}
+    int i; 
 
-void ft_putstr(char *str)
-{
-	int i;
-
-	i = 0;
-	while ((str[i]) != '\0')
-	{
-		ft_putc(str[i]);
-		++i;
-	}
-}
-
-int ft_strlen(char *str)
-{
-	int x;
-
-	x = 0;
-	while (str[x] != '\0')
-	{
-		++x;
-	}
-	debug_number(x, "X");
-	return (x);
+    i = 0;
+    while(arr[i].flag < END_FLAG)
+    {
+        if (arr[i].flag == c)
+             return (arr[i].fptr);
+        i++;
+    }
+    return (NULL);
 }
