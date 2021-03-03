@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/03 18:24:01 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/03/03 22:19:48 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,26 @@ typedef	enum				size_mod
 */
 
 typedef struct		s_converter
-{
-	char flag;
-	void (*fptr)(char *s);
+{	
+	char 	flag;
+	void 	(*fptr)(char *s);
 }					t_converter;
 
 /*
-** func_pointer defined 
+** struct with general use variables 
 */
-typedef	void		(*operate)(const char *format, ...);
+
+typedef	struct		s_struct
+{
+	char 	*f;
+	char 	*next;
+	char 	id;
+	int 	i;
+	int 	j;
+}					t_struct;
+
+typedef void		(*f_prt)(va_list args);
+
 /*
 ** func's_declared 
 */
@@ -69,18 +80,6 @@ void				conv_fetoa(const char *format, ...);
 void				conv_dtoa(const char *format, ...);
 void				conv_fetoa(const char *format, ...);
 void				ft_putstr(char *str);
-
-/*
-** variable struct
-*/
-
-typedef	struct		s_var
-{
-	char	*tmp;
-	int		i;
-	size_t	len;
-	int		e_index;
-}					t_var;
 
 /*
 ** ft_utilities.c
