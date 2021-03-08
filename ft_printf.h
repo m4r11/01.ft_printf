@@ -6,7 +6,7 @@
 /*   By: mvaldeta <mvaldeta@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/06 17:15:55 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/03/07 23:05:04 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,25 @@
 /*
 ** enums for modularity: flags, format & size
 */
-#define CONV_S "dixXufeEsSpn"
+#define CONV_S "dixXufeEsScgopn"
 
 typedef enum type_f
 {
-	d, // int
-	i,
-	x,
-	X,
-	u,
-	f,
-	e,
-	E,
-	s,
-	S,
-	p,
-	n,
+	d, // decimal int
+	i, // int
+	x, // int hex
+	X, // int hex
+	u, // unsiged int
+	f, // float
+	e, // float expon.
+	E, // float expon.
+	s, // string
+	S, // string
+	c, // single character
+	g, // general format floating point
+	o, // octal base 8
+	p, // %
+	n, // outpust # characters written
 	END_FLAG
 } type_f;
 
@@ -101,6 +104,7 @@ typedef void (*fptr)(t_type type, va_list args2);
 
 void conv_itoa(t_type type, va_list args2);
 void conv_xtoa(t_type type, va_list args2);
+void conv_Xtoa(t_type type, va_list args2);
 void conv_uitoa(t_type type, va_list args2);
 void conv_ftoa(t_type type, va_list args2);
 void conv_fetoa(t_type tyep, va_list args2);
@@ -117,6 +121,10 @@ void print_str(t_type type, va_list args2);
 void ft_putc(char c);
 void ft_putstr(char *str);
 int ft_strlen(char *str);
+int ft_tolower(int c);
+int ft_toupper(int c);
+size_t ft_intlen_bonus(int n);
+int ft_recursive_power(int nb, int power);
 
 /*
 ** conv_numbers
@@ -125,8 +133,9 @@ int ft_strlen(char *str);
 void ft_putnbr(int nb);
 char *ft_itoa(int n);
 bool is_base_valid(char *str);
-void ft_putnbr_base_recursiva(int number, char *base, int baseleng);
+void ft_putnbr_rebase(int number, int baseleng);
 void ft_putnbr_base(int nbr, char *base);
+void ft_putfloat(t_type type, va_list args2);
 
 /*
 ** ft_printf.c
