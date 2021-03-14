@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utilities.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 17:20:24 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/09 18:15:49 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/03/13 20:36:55 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,4 +132,116 @@ int counter(int n)
 
 	res += n;
 	return(res);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	while (*s != '\0' && (char)c != *s)
+		s++;
+	if ((char)c == *s)
+		return ((char *)s);
+	return (NULL);
+}
+
+int		ft_str_is_numeric(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (!(str[i] >= 48 && str[i] <= 57))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+static int	ft_ratoi(const char *str, int i)
+{
+	if (!*str || *str > '9' || *str < '0')
+		return (i);
+	i = i * 10 + (*str - '0');
+	return (ft_ratoi(++str, i));
+}
+
+int			ft_atoi(const char *str)
+{
+	while (*str == ' ' || *str == '\n' || *str == '\t' || *str == '\v' ||
+	*str == '\f' || *str == '\r')
+		str++;
+	if (*str == '-')
+		return (-ft_ratoi(++str, 0));
+	if (*str == '+')
+		return (ft_ratoi(++str, 0));
+	return (ft_ratoi(str, 0));
+}
+
+char	*print_x_times(int n, char c)
+{
+	//debug_number(n, "convertedn");
+	while (n > 1)
+	{
+		ft_putc(c);
+		n--;
+	}
+	return(0);
+}
+
+int    loop_through(char *flags, char *format, int j)
+{
+    int i;
+    char found;
+
+    int f;
+    f = 0;
+
+    while(format[j] != '%')
+    {
+        if (format[j] == CONV_S[f])
+            j++;
+        i = 0;
+        while (flags[i] != format[j] && flags[i] != '\0')
+            i++;
+        if (flags[i] == format[j])
+        {
+            return(i);
+                break;
+        }
+        else 
+            i = 0; 
+            j++;
+            f++;   
+    }
+    return(-1);
+}
+
+int  get_index(char *s1, char *s2)
+{
+    int j;
+	int mini_index = INT_MAX;
+	int len1 = ft_strlen(s1);
+	char *start = ft_strchr(s2, '%');
+	//debug_str(start, "start");
+	int len2 = ft_strlen(start);
+	//debug_number(len1, "len1");
+	int i = 0;
+    while(i < len2)
+    {	
+		i++;
+		j = 0;
+        while(j<len1)
+        {
+			j++;
+            if(s2[i] == s1[j] && j < mini_index)
+            {
+				mini_index = j;
+                return(j);
+				break;
+            }
+        }
+    }
+	if (mini_index != j)
+		return(NO_FORMAT);
+    return(0);
 }

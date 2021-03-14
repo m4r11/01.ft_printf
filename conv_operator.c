@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 09:22:56 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/11 16:00:54 by user             ###   ########.fr       */
+/*   Updated: 2021/03/14 01:10:36 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void conv_itoa(char *formatting, va_list args2)
 {
+    if(formatting != 0)
+        ft_putstr("8");
     int x;
     x = va_arg(args2, int);
     ft_putnbr(x);
@@ -120,14 +122,23 @@ void conv_fetoa(char *formatting, va_list args2)
 
 void print_str(char *formatting, va_list args2)
 {
+    int i;
     char *print;
     print = va_arg(args2, char *);
-    ft_putstr(print);
+    i = 0;
+    if(formatting != 0)
+        ft_putstr(formatting);
+    else
+        ft_putstr(print);
 }
 
 void print_c(char *formatting, va_list args2)
 {
-    char print;
+    int print;
+
     print = va_arg(args2, int);
+    if(formatting != 0)
+        ft_putstr(formatting);
     ft_putc(print);
+    return;
 }

@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/11 19:39:42 by user             ###   ########.fr       */
+/*   Updated: 2021/03/13 23:10:13 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@
 # include <limits.h>
 # include <stdbool.h>
 
+# define NO_FORMAT -1
+# define FOUND 
+
 /*
 ** enums for modularity: flags, format & size
 ** 
@@ -38,10 +41,11 @@ typedef enum e_ty
 	d,x,X,u,f,e,E,s,S,c,g,o,p,n,M,END_FLAG
 }			t_ty;
 
-# define DIR_S "-+ 0hljz.#123456789"
+# define DIR_S "*-+ 0hljz.#123456789"
 
 typedef enum e_dir 
 {
+	STAR,
     POSITION,
     SIGN,
     SPACESIGN,
@@ -90,7 +94,7 @@ typedef struct s_type
 */
 
 typedef void (*fptrconv)(char *formatting, va_list args2);
-typedef void (*fptrdir)(char *dir);
+typedef char (*fptrdir)(char *dir, va_list args2);
 
 /*
 **  conversion func's_declared 
@@ -111,16 +115,17 @@ void print_c(char *formatting, va_list args2);
 **  format directives func's_declared 
 */
 
-void    put_position(char *dir);
-void    put_sign(char *dir);
-void    put_space(char *dir);
-void    put_zeroes(char *dir);
-void    put_len(char *dir);
-void    put_dec_precision(char *dir);
-void    put_alternate(char *dir);
-void    put_field(char *dir);
+char    put_star(char *dir, va_list args2);
+char   	put_position(char *dir, va_list args2);
+char    put_sign(char *dir, va_list args2);
+char    put_space(char *dir, va_list args2);
+char    put_zeroes(char *dir, va_list args2);
+char    put_len(char *dir, va_list args2);
+char    put_dec_precision(char *dir, va_list args2);
+char    put_alternate(char *dir,va_list args2);
+char    put_field(char *dir,va_list args2);
 
-char *has_formating(char *format, int n);
+char *has_formating(char *format, int n, va_list args2);
 int  get_index(char *s1, char *s2);
 
 /*
@@ -138,11 +143,14 @@ int ft_tolower(int c);
 int ft_toupper(int c);
 int ft_recursive_power(int nb, int power);
 char	*ft_strchr(const char *s, int c);
+int		ft_str_is_numeric(char *str);
+int			ft_atoi(const char *str);
+char	*print_x_times(int n, char c);
+int    loop_through(char *flags, char *format, int a);
 
 /*
 ** conv_numbers
 */
-
 void ft_putnbr(int nb);
 char *ft_itoa(int n);
 bool is_base_valid(char *str);
@@ -151,8 +159,16 @@ void ft_putnbr_base(int nbr, char *base);
 void ft_putfloat(t_type type, va_list args2);
 
 /*
+** parse_directives.c
+*/
+int    loop_for_directives(char *flags, char *format, int j);
+
+
+
+/*
 ** ft_printf.c
 */
+
 int ft_printf(const char *format, ...);
 
 /* 

@@ -31,67 +31,47 @@ static fptrconv get_converter[] =
 		//&print_ptr,
 		//&print_n,
 
-};
-
-int  get_index(char *s1, char *s2)
-{
-    int j = 0;
-	int mini_index = INT_MAX;
-	int len1 = ft_strlen(s1);
-	int len2 = ft_strlen(s2);
-	int i = 0;
-    while(i < len2)
-    {	
-		i++;
-		j = -1;
-        while(j<len1)
-        {
-			j++;
-            if(s2[i] == s1[j] && j < mini_index)
-            {
-				mini_index = j;
-                return(j);
-				break;
-            }
-        }
-    }
-    return(j);
-}
+	};
 
 int ft_printf(const char *format, ...)
 {
-	va_list args;
-	va_list args2;
-	t_struct v;
-	t_type type;
-	int r;
+   va_list args;
+   va_list args2;
+   t_struct v;
+   t_type type;
 
-	va_start(args, format);
-	va_copy(args2, args);
-
-	v.temp = ft_strdup(format);
-	v.i = 0;
-	while (v.temp[v.i])
+   int find_dir;
+   int find_flag;
+ 
+   va_start(args, format);
+   va_copy(args2, args);
+ 
+   v.temp = ft_strdup(format);
+   v.i = 0;
+  while (v.temp[v.i])
 	{
 		if (v.temp[v.i] != '%')
 			ft_putc(v.temp[v.i]);
-		else
+		else 
 		{
 			v.i++;
-			v.c = 0;
-			v.j = 0;
-			has_formating(v.temp, get_index(DIR_S, v.temp));
-			v.i++;
-			while(CONV_S[v.j])
+			find_flag = loop_through(CONV_S, v.temp, v.i);
+			find_dir = loop_for_directives(DIR_S, v.temp, 0);
+			/* debug_number(find_dir, "dir");
+			debug_number(find_flag, "flag"); */
+			if (find_flag > -1)
 			{
-				if(CONV_S[v.j] == v.temp[v.i])
-					get_converter[v.j](DIR_S, args2);
-				v.j++;
-			}				
-		}
+				get_converter[find_flag](has_formating(v.temp, find_dir, args2), args2);
+				v.i++;
+			}	
+			if (v.temp[v.i] == ' ')
+				ft_putc(v.temp[v.i]);
+			v.i++;
+		}	
 		v.i++;
 	}
-	va_end(args);
-	free(v.temp);
-	return (counter(0));
+   va_end(args);
+   free(v.temp);
+   return (counter(0));
 }
+

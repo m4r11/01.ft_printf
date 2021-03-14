@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mvaldeta <mvaldeta@student.42lisboa.com    +#+  +:+       +#+         #
+#    By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/27 16:16:23 by mvaldeta          #+#    #+#              #
-#    Updated: 2021/03/08 21:09:04 by mvaldeta         ###   ########.fr        #
+#    Updated: 2021/03/13 20:12:56 by user             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,9 @@ SRC =	conv_numbers.c\
 		ft_printf.c\
 		ft_utilities.c\
 		conv_operator.c\
+		deploy_format.c\
+		directives_operator.c\
+		parse_directives.c\
 
 OBJ = $(SRC:.c=.o)
 

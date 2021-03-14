@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 13:55:42 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/12 00:04:34 by user             ###   ########.fr       */
+/*   Updated: 2021/03/14 01:07:18 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 static  fptrdir get_dir[] =
     {
+        &put_star,
         &put_position,
         &put_sign,
 		&put_sign,
@@ -37,9 +38,12 @@ static  fptrdir get_dir[] =
 		&put_field,
 };
 
-char *has_formating(char *format, int n)
+char *has_formating(char *format, int n, va_list args2)
 {
-    get_dir[n](format);
-    printf("%c", format[n+1]);
-return(0);
+    //debug_number(n, "n");
+    if(n == NO_FORMAT)
+        return(0);
+    else
+        get_dir[n](format, args2);  
+    return(0);
 }
