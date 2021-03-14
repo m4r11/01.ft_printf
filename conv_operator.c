@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 09:22:56 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/14 01:10:36 by user             ###   ########.fr       */
+/*   Updated: 2021/03/14 16:08:55 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,23 +122,22 @@ void conv_fetoa(char *formatting, va_list args2)
 
 void print_str(char *formatting, va_list args2)
 {
-    int i;
     char *print;
     print = va_arg(args2, char *);
-    i = 0;
-    if(formatting != 0)
-        ft_putstr(formatting);
-    else
-        ft_putstr(print);
+    //debug_str(print, "PRINT");
+    ft_putstr(print);
 }
 
 void print_c(char *formatting, va_list args2)
 {
+    debug_str(&formatting, "format");
+   /*      printf("I'm here"); */
     int print;
-
-    print = va_arg(args2, int);
-    if(formatting != 0)
-        ft_putstr(formatting);
-    ft_putc(print);
-    return;
+    if (formatting == 0)
+    {
+        print = va_arg(args2, int);
+         ft_putc(print);
+    }
+    else 
+        return ;
 }

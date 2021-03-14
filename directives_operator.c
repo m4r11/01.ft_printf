@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 11:14:27 by user              #+#    #+#             */
-/*   Updated: 2021/03/14 01:10:09 by user             ###   ########.fr       */
+/*   Updated: 2021/03/14 15:59:44 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,21 +79,33 @@ char    put_field(char *dir,va_list args2)
         int converted;
         char *temp = (ft_strchr(dir, '%') + 1);
         len = ft_strlen(temp);
-
-        i = 1;
+        
+        //debug_str(temp, "temp");
+        i = 0;
         j = 0;
-        while (i < len && j < (len-1))
-            to_convert[j++] = temp[i++];
+        while (i < (len-1) && j < len)
+        {
+            to_convert[j] = temp[i];
+            i++;
+            j++;
+        } 
         to_convert[j] = '\0';
-        converted = ft_atoi(to_convert);
+
+        converted = ft_simple_atoi(to_convert);
         x = va_arg(args2, int);
         if (temp[0] == '-')
         {
+            //debug_number(converted, "converted");
             ft_putc(x);
-            print_x_times(converted - 1, ' ');
-        
+            print_x_times(converted - 1, ' ');     
         }
         else 
-            print_x_times(converted , ' ');    
+        {
+            //printf("im gere");
+            print_x_times(converted , ' ');
+            exit(0);
+        }
     return(0);
 }
+
+/* Don't touch this */

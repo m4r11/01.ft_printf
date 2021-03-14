@@ -35,29 +35,29 @@ static fptrconv get_converter[] =
 
 int ft_printf(const char *format, ...)
 {
-   va_list args;
-   va_list args2;
    t_struct v;
    t_type type;
 
    int find_dir;
    int find_flag;
- 
    va_start(args, format);
    va_copy(args2, args);
  
    v.temp = ft_strdup(format);
-   v.i = 0;
-  while (v.temp[v.i])
+   int len = ft_strlen(v.temp);
+
+  	 v.i = 0;
+ 	while (v.temp[v.i])
 	{
-		if (v.temp[v.i] != '%')
+		if (v.temp[v.i] != '%' && v.temp[v.i] != 'c')
 			ft_putc(v.temp[v.i]);
 		else 
 		{
+			//printf("i'm passing here");
 			v.i++;
 			find_flag = loop_through(CONV_S, v.temp, v.i);
 			find_dir = loop_for_directives(DIR_S, v.temp, 0);
-			/* debug_number(find_dir, "dir");
+		/* 	debug_number(find_dir, "dir");
 			debug_number(find_flag, "flag"); */
 			if (find_flag > -1)
 			{
@@ -74,4 +74,3 @@ int ft_printf(const char *format, ...)
    free(v.temp);
    return (counter(0));
 }
-

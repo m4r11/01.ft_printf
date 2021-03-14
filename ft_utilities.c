@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 17:20:24 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/13 20:36:55 by user             ###   ########.fr       */
+/*   Updated: 2021/03/14 15:58:25 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,10 +177,18 @@ int			ft_atoi(const char *str)
 	return (ft_ratoi(str, 0));
 }
 
+int			ft_simple_atoi(const char *str)
+{
+	while (*str == ' ' || *str == '\n' || *str == '\t' || *str == '\v' ||
+	*str == '\f' || *str == '\r' || *str == '-')
+		str++;
+	return (ft_ratoi(str, 0));
+}
+
 char	*print_x_times(int n, char c)
 {
 	//debug_number(n, "convertedn");
-	while (n > 1)
+	while (n > 0)
 	{
 		ft_putc(c);
 		n--;
@@ -196,8 +204,9 @@ int    loop_through(char *flags, char *format, int j)
     int f;
     f = 0;
 
-    while(format[j] != '%')
+    while(format[j] != '%' && format[j] !='\0')
     {
+		//debug_str(format, "format");
         if (format[j] == CONV_S[f])
             j++;
         i = 0;
@@ -205,6 +214,8 @@ int    loop_through(char *flags, char *format, int j)
             i++;
         if (flags[i] == format[j])
         {
+			/* debug_number(i, "i");
+			debug_number(i, "j"); */
             return(i);
                 break;
         }
@@ -244,4 +255,12 @@ int  get_index(char *s1, char *s2)
 	if (mini_index != j)
 		return(NO_FORMAT);
     return(0);
+}
+
+int	ft_isalpha(int c)
+{
+	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+		return (1);
+	else
+		return (0);
 }

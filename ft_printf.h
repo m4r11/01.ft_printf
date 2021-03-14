@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/13 23:10:13 by user             ###   ########.fr       */
+/*   Updated: 2021/03/14 15:48:41 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@
 
 # define NO_FORMAT -1
 # define FOUND 
+# define LETTER 1
+
+va_list args;
+va_list args2;
 
 /*
 ** enums for modularity: flags, format & size
@@ -147,7 +151,8 @@ int		ft_str_is_numeric(char *str);
 int			ft_atoi(const char *str);
 char	*print_x_times(int n, char c);
 int    loop_through(char *flags, char *format, int a);
-
+int	ft_isalpha(int c);
+int			ft_simple_atoi(const char *str);
 /*
 ** conv_numbers
 */
