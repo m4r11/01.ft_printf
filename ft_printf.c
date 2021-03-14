@@ -61,7 +61,8 @@ int ft_printf(const char *format, ...)
 			debug_number(find_flag, "flag"); */
 			if (find_flag > -1)
 			{
-				get_converter[find_flag](has_formating(v.temp, find_dir, args2), args2);
+				has_formating(v.temp, find_dir, args2);
+				get_converter[find_flag](find_dir, args2);
 				v.i++;
 			}	
 			if (v.temp[v.i] == ' ')

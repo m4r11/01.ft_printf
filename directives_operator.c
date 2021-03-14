@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 11:14:27 by user              #+#    #+#             */
-/*   Updated: 2021/03/14 15:59:44 by user             ###   ########.fr       */
+/*   Updated: 2021/03/14 16:29:30 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ char    put_field(char *dir,va_list args2)
         {
             //printf("im gere");
             print_x_times(converted , ' ');
+            ft_putc(x);
             exit(0);
         }
     return(0);

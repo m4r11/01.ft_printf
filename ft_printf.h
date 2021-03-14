@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/14 15:48:41 by user             ###   ########.fr       */
+/*   Updated: 2021/03/14 16:28:32 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,23 +97,23 @@ typedef struct s_type
 **  function * type def for conversion
 */
 
-typedef void (*fptrconv)(char *formatting, va_list args2);
+typedef void (*fptrconv)(int has_format, va_list args2);
 typedef char (*fptrdir)(char *dir, va_list args2);
 
 /*
 **  conversion func's_declared 
 */
 
-void conv_itoa(char *formatting, va_list args2);
-void conv_xtoa(char *formatting, va_list args2);
-void conv_Xtoa(char *formatting, va_list args2);
-void conv_uitoa(char *formatting, va_list args2);
-void conv_ftoa(char *formatting, va_list args2);
-void conv_fetoa(char *formatting, va_list args2);
-void conv_fetoa(char *formatting, va_list args2);
-void conv_dtoa(char *formatting, va_list args2);
-void print_str(char *formatting, va_list args2);
-void print_c(char *formatting, va_list args2);
+void conv_itoa(int has_format, va_list args2);
+void conv_xtoa(int has_format, va_list args2);
+void conv_Xtoa(int has_format, va_list args2);
+void conv_uitoa(int has_format, va_list args2);
+void conv_ftoa(int has_format, va_list args2);
+void conv_fetoa(int has_format, va_list args2);
+void conv_fetoa(int has_format, va_list args2);
+void conv_dtoa(int has_format, va_list args2);
+void print_str(int has_format, va_list args2);
+void print_c(int has_format, va_list args2);
 
 /*
 **  format directives func's_declared 
@@ -153,6 +153,7 @@ char	*print_x_times(int n, char c);
 int    loop_through(char *flags, char *format, int a);
 int	ft_isalpha(int c);
 int			ft_simple_atoi(const char *str);
+
 /*
 ** conv_numbers
 */
