@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/14 16:28:32 by user             ###   ########.fr       */
+/*   Updated: 2021/03/17 18:39:52 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include <stdio.h>
 # include <limits.h>
 # include <stdbool.h>
+# include <string.h>
 
 # define NO_FORMAT -1
 # define FOUND 
@@ -73,6 +74,7 @@ typedef struct s_struct
 	char *str;
 	char *temp;
 	char *next;
+	int n;
 	char id;
 	int i;
 	int j;
@@ -97,23 +99,23 @@ typedef struct s_type
 **  function * type def for conversion
 */
 
-typedef void (*fptrconv)(int has_format, va_list args2);
+typedef void (*fptrconv)(char *input, int has_format, va_list args2);
 typedef char (*fptrdir)(char *dir, va_list args2);
 
 /*
 **  conversion func's_declared 
 */
 
-void conv_itoa(int has_format, va_list args2);
-void conv_xtoa(int has_format, va_list args2);
-void conv_Xtoa(int has_format, va_list args2);
-void conv_uitoa(int has_format, va_list args2);
-void conv_ftoa(int has_format, va_list args2);
-void conv_fetoa(int has_format, va_list args2);
-void conv_fetoa(int has_format, va_list args2);
-void conv_dtoa(int has_format, va_list args2);
-void print_str(int has_format, va_list args2);
-void print_c(int has_format, va_list args2);
+void conv_itoa(char *input, int has_format, va_list args2);
+void conv_xtoa(char *input, int has_format, va_list args2);
+void conv_Xtoa(char *input, int has_format, va_list args2);
+void conv_uitoa(char *input, int has_format, va_list args2);
+void conv_ftoa(char *input, int has_format, va_list args2);
+void conv_fetoa(char *input, int has_format, va_list args2);
+void conv_fetoa(char *input, int has_format, va_list args2);
+void conv_dtoa(char *input, int has_format, va_list args2);
+void print_str(char *input, int has_format, va_list args2);
+void print_c(char *input, int has_format, va_list args2);
 
 /*
 **  format directives func's_declared 
@@ -131,6 +133,14 @@ char    put_field(char *dir,va_list args2);
 
 char *has_formating(char *format, int n, va_list args2);
 int  get_index(char *s1, char *s2);
+
+/*
+** field.c
+*/
+
+char    put_field(char *dir,va_list args2);
+char field_c_combos(char *dir,va_list args2);
+char    field_c(char *dir,va_list args2);
 
 /*
 ** ft_utilities.c
@@ -153,7 +163,12 @@ char	*print_x_times(int n, char c);
 int    loop_through(char *flags, char *format, int a);
 int	ft_isalpha(int c);
 int			ft_simple_atoi(const char *str);
-
+void	*ft_memmove(void *dst, const void *src, size_t len);
+char	*ft_strnew(size_t size);
+int arg_number(char *to_parse);
+int		ft_intstrchr(char *s, int c, int start);
+int		ft_putcharfrom(char *s, int start, char *dir, char *flag);
+void	print_the_rest(char *input, char c);
 /*
 ** conv_numbers
 */
@@ -176,6 +191,7 @@ int    loop_for_directives(char *flags, char *format, int j);
 */
 
 int ft_printf(const char *format, ...);
+int	parse(char *to_parse, int i);
 
 /* 
 **debugs

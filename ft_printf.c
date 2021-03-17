@@ -37,41 +37,63 @@ int ft_printf(const char *format, ...)
 {
    t_struct v;
    t_type type;
-
-   int find_dir;
-   int find_flag;
+;
    va_start(args, format);
    va_copy(args2, args);
- 
-   v.temp = ft_strdup(format);
-   int len = ft_strlen(v.temp);
+   int argnum;
+   
+    v.temp = ft_strdup(format);
+    int len = ft_strlen(v.temp);
+	argnum = arg_number(v.temp);
+	int t;
+	int flag;
 
-  	 v.i = 0;
+
+  	v.i = 0;
  	while (v.temp[v.i])
 	{
-		if (v.temp[v.i] != '%' && v.temp[v.i] != 'c')
-			ft_putc(v.temp[v.i]);
+		if (v.temp[v.i] == '%')
+		{
+			flag = parse(v.temp, v.i);
+			while (ft_intstrchr(v.temp, '%', v.i) != -1)
+			{
+				print_the_rest(v.temp, CONV_S[flag]);
+				v.i = ft_intstrchr(v.temp, '%', v.i);
+				flag = parse(v.temp, v.i);
+			} 
+			v.i = ft_putcharfrom(v.temp, v.i, DIR_S, CONV_S) + v.i;
+			if (v.temp[v.i] != CONV_S[flag])
+			{
+				ft_putc(v.temp[v.i]);
+				//debug_number(v.i, "v.i");
+			}
+			else 
+				v.i++;
+		}
 		else 
 		{
-			//printf("i'm passing here");
-			v.i++;
-			find_flag = loop_through(CONV_S, v.temp, v.i);
-			find_dir = loop_for_directives(DIR_S, v.temp, 0);
-		/* 	debug_number(find_dir, "dir");
-			debug_number(find_flag, "flag"); */
-			if (find_flag > -1)
-			{
-				has_formating(v.temp, find_dir, args2);
-				get_converter[find_flag](find_dir, args2);
-				v.i++;
-			}	
-			if (v.temp[v.i] == ' ')
-				ft_putc(v.temp[v.i]);
-			v.i++;
-		}	
+			ft_putc(v.temp[v.i]);
+			//printf("imhere");
+		}
 		v.i++;
 	}
    va_end(args);
    free(v.temp);
    return (counter(0));
+}
+
+int	parse(char *to_parse, int i)
+{
+	int find_dir;
+    int find_flag;
+	char *parsed = ft_strchr(to_parse, '%');
+	int len = ft_strlen(to_parse);
+
+		find_flag = loop_through(CONV_S, to_parse, i);
+		find_dir = loop_for_directives(DIR_S, to_parse, i);
+/* 		debug_number(find_flag, "flag");
+		debug_number(find_dir, "dir"); */
+		has_formating(to_parse, find_dir, args2);
+		get_converter[find_flag](parsed, find_dir, args2);
+return(find_flag);
 }

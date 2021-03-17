@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 17:20:24 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/14 15:58:25 by user             ###   ########.fr       */
+/*   Updated: 2021/03/17 17:54:14 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,19 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
+int		ft_intstrchr(char *s, int c, int start)
+{
+	int i;
+	i = start;
+	if (s[start] == c)
+		i++;
+	while(s[i] != '\0' && s[i] != c)
+		i++;
+	if (c == s[i])
+		return(i);
+	return(-1);
+}
+
 int		ft_str_is_numeric(char *str)
 {
 	int i;
@@ -196,37 +209,6 @@ char	*print_x_times(int n, char c)
 	return(0);
 }
 
-int    loop_through(char *flags, char *format, int j)
-{
-    int i;
-    char found;
-
-    int f;
-    f = 0;
-
-    while(format[j] != '%' && format[j] !='\0')
-    {
-		//debug_str(format, "format");
-        if (format[j] == CONV_S[f])
-            j++;
-        i = 0;
-        while (flags[i] != format[j] && flags[i] != '\0')
-            i++;
-        if (flags[i] == format[j])
-        {
-			/* debug_number(i, "i");
-			debug_number(i, "j"); */
-            return(i);
-                break;
-        }
-        else 
-            i = 0; 
-            j++;
-            f++;   
-    }
-    return(-1);
-}
-
 int  get_index(char *s1, char *s2)
 {
     int j;
@@ -263,4 +245,111 @@ int	ft_isalpha(int c)
 		return (1);
 	else
 		return (0);
+}
+
+void	*ft_memmove(void *dst, const void *src, size_t len)
+{
+	size_t i;
+
+	if (!dst && !src)
+		return (0);
+	i = 0;
+	if ((size_t)dst - (size_t)src < len)
+	{
+		i = len - 1;
+		while (i >= 0 && i < len)
+		{
+			((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+			i--;
+		}
+	}
+	else
+	{
+		while (i < len)
+		{
+			((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+			i++;
+		}
+	}
+	return (dst);
+}
+
+char	*ft_strnew(size_t size)
+{
+	char	*str;
+	int		i;
+
+	i = 0;
+	str = (char *)malloc(sizeof(char) * size + 1);
+	if (!str)
+		return (NULL);
+	while (size--)
+	{
+		*(str++) = '\0';
+		i++;
+	}
+	*str = '\0';
+	return (str - i);
+}
+
+int arg_number(char *to_parse)
+{
+	int i;
+	int counter;
+	counter = 0;
+	i = 0;
+	while(*to_parse)
+	{
+		if(*to_parse == '%')
+			counter +=1;
+		to_parse++;
+	}
+	return(counter);
+}
+
+int		ft_putcharfrom(char *s, int start, char *dir, char *flag)
+{
+	int i;
+	i = start;
+    int j; 
+    int k;
+    int len = 0;
+    while(s[i] != '\0')
+    {
+        j = 0;
+        while(dir[j] != '\0')
+        {
+            if (dir[j] == s[i])
+            {
+                len+=1;
+                break;
+            }
+            j++;
+        }
+        k = 0;
+        while(flag[k] != '\0')
+        {
+            if (flag[k] == s[i])
+            {
+                len+=1;
+                break;
+            }
+            k+=1;
+        }
+        i++;
+    }
+	return(len);
+}
+
+void	print_the_rest(char *input, char c)
+{
+	int i; 
+	i = 2;
+	while (input[i] != '%')
+	{
+		if(input[i] != c )
+			ft_putc(input[i]);
+		i++;
+	}
+	return;
 }

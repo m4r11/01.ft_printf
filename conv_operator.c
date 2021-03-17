@@ -6,13 +6,13 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 09:22:56 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/14 16:31:18 by user             ###   ########.fr       */
+/*   Updated: 2021/03/17 17:26:17 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void conv_itoa(int has_format, va_list args2)
+void conv_itoa(char *input, int has_format, va_list args2)
 {
     if(has_format == -1)
         ft_putstr("8");
@@ -20,7 +20,7 @@ void conv_itoa(int has_format, va_list args2)
     x = va_arg(args2, int);
     ft_putnbr(x);
 }
-void conv_xtoa(int has_format, va_list args2)
+void conv_xtoa(char *input, int has_format, va_list args2)
 {
     long decimal;
     long quotient;
@@ -47,7 +47,7 @@ void conv_xtoa(int has_format, va_list args2)
     return;
 }
 
-void conv_Xtoa(int has_format, va_list args2)
+void conv_Xtoa(char *input, int has_format, va_list args2)
 {
     long decimal;
     long quotient;
@@ -72,13 +72,13 @@ void conv_Xtoa(int has_format, va_list args2)
     free(hexadecimal);
     return;
 }
-void conv_uitoa(int has_format, va_list args2)
+void conv_uitoa(char *input, int has_format, va_list args2)
 {
     int x;
     x = va_arg(args2, int);
     ft_putnbr(x);
 }
-void conv_ftoa(int has_format, va_list args2)
+void conv_ftoa(char *input, int has_format, va_list args2)
 {
     double f;
     signed long int decipart;
@@ -98,7 +98,7 @@ void conv_ftoa(int has_format, va_list args2)
     decipart = (signed long int)(f + 0.5); //+0.5 to round of the value
     ft_putnbr(decipart);
 }
-void conv_fetoa(int has_format, va_list args2)
+void conv_fetoa(char *input, int has_format, va_list args2)
 {
     double f;
     signed long int decipart;
@@ -120,18 +120,21 @@ void conv_fetoa(int has_format, va_list args2)
     ft_putstr("e+");
 }
 
-void print_str(int has_format, va_list args2)
+void print_str(char *input, int has_format, va_list args2)
 {
     char *print;
-    print = va_arg(args2, char *);
-    //debug_str(print, "PRINT");
-    ft_putstr(print);
+    if( has_format == -1)
+    {
+        //debug_str(input, "input");
+        print = va_arg(args2, char *);
+        ft_putstr(print);
+    }
+     else 
+        return ;
 }
 
-void print_c(int has_format, va_list args2)
+void print_c(char *input, int has_format, va_list args2)
 {
-    //debug_number(has_format, "format");
-   /*      printf("I'm here"); */
     int print;
     if (has_format == -1)
     {

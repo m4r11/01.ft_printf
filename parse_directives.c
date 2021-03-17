@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 20:10:36 by user              #+#    #+#             */
-/*   Updated: 2021/03/14 14:48:20 by user             ###   ########.fr       */
+/*   Updated: 2021/03/17 19:10:28 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,36 +16,50 @@ int    loop_for_directives(char *flags, char *format, int j)
 {
     int i;
     char found;
-    char *start = (ft_strchr(format, '%') + 1);
+    char *start = (ft_strchr(&format[j], '%') + 1);
+    //debug_str(start, "start");
+    int argnum;
     int f;
     f = 0;
+    argnum = arg_number(format);
     
-    if(ft_isalpha(start[0]) == 1)
-       return(-1);
-    if(ft_str_is_numeric(start) != 1)
-        return(FIELD);
+    if(start[0] == '*')
+        return(STAR);
     if(start[0] == '-')
         return(FIELD);
-    if (start[j] == 99)
+    if(start[0] == '+')
+        return(SIGN);
+    if(start[0] == ' ')
+        return(SPACESIGN);
+    if(start[0] == '0')
+        return(ZERO);
+    if(start[0] == 'h')
+        return(SHORT);
+    if(start[0] == 'l')
+        return(LONG);
+    if(start[0] == '.')
+        return(PRECISION);
+    if(start[0] == '#')
+        return(ALTERNATE);
+    if(start[0] == '1')
+        return(FIELD);
+    if(start[0] == '2')
+        return(FIELD);
+    if(start[0] == '3')
+        return(FIELD);
+    if(start[0] == '4')
+        return(FIELD);
+    if(start[0] == '5')
+        return(FIELD);
+    if(start[0] == '6')
+        return(FIELD);
+    if(start[0] == '7')
+        return(FIELD);
+    if(start[0] == '8')
+        return(FIELD);
+    if(start[0] == '9')
+        return(FIELD);
+    else 
         return(-1);
-    if(start[j] == 42)
-        return(STAR);
-    while(start[j])
-    {  
-        if (start[j] == CONV_S[f])
-            return(-1);
-        i = 0;
-        while (flags[i] != start[j] && flags[i] < END_DIR)
-            i++;
-        if (flags[i] == start[j])
-        {
-            return(i);
-                break;
-        }
-        else 
-            i = 0; 
-        j++;
-            f++;  
-    }
-    return(-1);
+    return(0);
 }
