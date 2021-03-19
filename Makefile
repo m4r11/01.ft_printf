@@ -6,7 +6,7 @@
 #    By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/27 16:16:23 by mvaldeta          #+#    #+#              #
-#    Updated: 2021/03/17 18:40:01 by user             ###   ########.fr        #
+#    Updated: 2021/03/19 17:15:40 by user             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,8 @@ SRC =	conv_numbers.c\
 		parse_directives.c\
 		parse_flag.c\
 		field.c\
+		star.c\
+		precision.c
 
 OBJ = $(SRC:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/17 18:39:52 by user             ###   ########.fr       */
+/*   Updated: 2021/03/19 17:23:47 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,32 @@ va_list args;
 va_list args2;
 
 /*
-** enums for modularity: flags, format & size
-** 
+** string to fetch precision
 */
+# define PRE_S "123456789"
 
+/*
+** string to fetch types
+*/
 # define CONV_S "dixXufeEsScgopn"
 
-typedef enum e_ty
+/*
+** complete DIR_S
+*/
+# define DIR_S "*-+ 0hljz.#123456789"
+
+/*
+** simplified DIR_S wihtout the space for middle_print function 
+*/
+# define DIR2_S "*-+hljz.#123456789"
+
+/*
+** enums for modularity: flags, format & size
+*/
+typedef enum e_flag
 {
 	d,x,X,u,f,e,E,s,S,c,g,o,p,n,M,END_FLAG
-}			t_ty;
-
-# define DIR_S "*-+ 0hljz.#123456789"
+}			t_flag;
 
 typedef enum e_dir 
 {
@@ -65,10 +79,10 @@ typedef enum e_dir
     END_DIR,
 }			t_dir;
 
-
 /*
 ** struct with general use variables 
 */
+
 typedef struct s_struct
 {
 	char *str;
@@ -100,7 +114,7 @@ typedef struct s_type
 */
 
 typedef void (*fptrconv)(char *input, int has_format, va_list args2);
-typedef char (*fptrdir)(char *dir, va_list args2);
+typedef char (*fptrdir)(char *dir, va_list args2, int flag);
 
 /*
 **  conversion func's_declared 
@@ -121,26 +135,38 @@ void print_c(char *input, int has_format, va_list args2);
 **  format directives func's_declared 
 */
 
-char    put_star(char *dir, va_list args2);
-char   	put_position(char *dir, va_list args2);
-char    put_sign(char *dir, va_list args2);
-char    put_space(char *dir, va_list args2);
-char    put_zeroes(char *dir, va_list args2);
-char    put_len(char *dir, va_list args2);
-char    put_dec_precision(char *dir, va_list args2);
-char    put_alternate(char *dir,va_list args2);
-char    put_field(char *dir,va_list args2);
+char    put_star(char *dir, va_list args2, int flag);
+char   	put_position(char *dir, va_list args2, int flag);
+char    put_sign(char *dir, va_list args2, int flag);
+char    put_space(char *dir, va_list args2, int flag);
+char    put_zeroes(char *dir, va_list args2, int flag);
+char    put_len(char *dir, va_list args2, int flag);
+char    put_dec_precision(char *dir, va_list args2, int flag);
+char    put_alternate(char *dir,va_list args2, int flag);
+char    put_field(char *dir,va_list args2, int flag);
 
-char *has_formating(char *format, int n, va_list args2);
+char *has_formating(char *format, int n, va_list args2, int flag);
 int  get_index(char *s1, char *s2);
 
 /*
 ** field.c
 */
 
-char    put_field(char *dir,va_list args2);
 char field_c_combos(char *dir,va_list args2);
-char    field_c(char *dir,va_list args2);
+char  field_c(char *dir,va_list args2);
+char field_s(char *dir,va_list args2);
+
+/*
+** star.c
+*/
+
+char    star_s(char *dir, va_list args2);
+
+/*
+** precision.c
+*/
+
+char    precision_s(char *dir,va_list args2);
 
 /*
 ** ft_utilities.c
@@ -148,6 +174,7 @@ char    field_c(char *dir,va_list args2);
 
 void ft_putc(char c);
 void ft_putstr(char *str);
+char ft_putstr_limit(char *str, int limit);
 char *ft_strdup(const char *s1);
 int ft_intlen_bonus(int);
 int counter(int n);
@@ -168,7 +195,9 @@ char	*ft_strnew(size_t size);
 int arg_number(char *to_parse);
 int		ft_intstrchr(char *s, int c, int start);
 int		ft_putcharfrom(char *s, int start, char *dir, char *flag);
-void	print_the_rest(char *input, char c);
+int		ft_intstrchr_flag(char *s, int c, int start);
+int find_first_flag(char *input);
+int   print_the_middle(char *input, int flag1_end);
 /*
 ** conv_numbers
 */

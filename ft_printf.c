@@ -47,6 +47,7 @@ int ft_printf(const char *format, ...)
 	argnum = arg_number(v.temp);
 	int t;
 	int flag;
+	char *midle_print;
 
 
   	v.i = 0;
@@ -57,15 +58,17 @@ int ft_printf(const char *format, ...)
 			flag = parse(v.temp, v.i);
 			while (ft_intstrchr(v.temp, '%', v.i) != -1)
 			{
-				print_the_rest(v.temp, CONV_S[flag]);
+				print_the_middle(v.temp, find_first_flag(v.temp));
 				v.i = ft_intstrchr(v.temp, '%', v.i);
+				//debug_number(v.i, "v.i");
+				//debug_number(flag, "flag");
 				flag = parse(v.temp, v.i);
 			} 
 			v.i = ft_putcharfrom(v.temp, v.i, DIR_S, CONV_S) + v.i;
 			if (v.temp[v.i] != CONV_S[flag])
 			{
+				//debug_number(flag, "flag");
 				ft_putc(v.temp[v.i]);
-				//debug_number(v.i, "v.i");
 			}
 			else 
 				v.i++;
@@ -73,7 +76,7 @@ int ft_printf(const char *format, ...)
 		else 
 		{
 			ft_putc(v.temp[v.i]);
-			//printf("imhere");
+			//debug_number(v.i, "v.i");
 		}
 		v.i++;
 	}
@@ -93,7 +96,7 @@ int	parse(char *to_parse, int i)
 		find_dir = loop_for_directives(DIR_S, to_parse, i);
 /* 		debug_number(find_flag, "flag");
 		debug_number(find_dir, "dir"); */
-		has_formating(to_parse, find_dir, args2);
+		has_formating(to_parse, find_dir, args2, find_flag);
 		get_converter[find_flag](parsed, find_dir, args2);
 return(find_flag);
 }

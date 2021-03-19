@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 09:22:56 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/17 17:26:17 by user             ###   ########.fr       */
+/*   Updated: 2021/03/18 12:56:02 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ void print_str(char *input, int has_format, va_list args2)
     char *print;
     if( has_format == -1)
     {
-        //debug_str(input, "input");
+        //debug_str(input, "input")o -4 n e daqui;
         print = va_arg(args2, char *);
         ft_putstr(print);
     }

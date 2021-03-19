@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 13:55:42 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/14 16:28:23 by user             ###   ########.fr       */
+/*   Updated: 2021/03/18 12:02:10 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ static  fptrdir get_dir[] =
 		&put_field,
 };
 
-char *has_formating(char *format, int n, va_list args2)
+char *has_formating(char *format, int n, va_list args2, int flag)
 {
  /*    debug_number(n, "n");
     debug_str(format, "format"); */
     if(n == NO_FORMAT)
         return(0);
     else
-        get_dir[n](format, args2);  
+        get_dir[n](format, args2, flag);  
     return(0);
 }

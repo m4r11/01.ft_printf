@@ -6,14 +6,14 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 11:14:27 by user              #+#    #+#             */
-/*   Updated: 2021/03/17 19:09:35 by user             ###   ########.fr       */
+/*   Updated: 2021/03/19 17:15:29 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "ft_directives.h"
-
-char    put_star(char *dir, va_list args2)
+/* 
+char    put_star(char *dir, va_list args2, int flag)
 {
     int x;
     int i;
@@ -46,39 +46,39 @@ char    put_star(char *dir, va_list args2)
         i++;
     }
      return(0); 
-}
+} */
 
-char    put_position(char *dir,va_list args2)
+char    put_position(char *dir,va_list args2, int flag)
 {
         ft_putstr("-");
         return(0);
 }
-char    put_sign(char *dir,va_list args2)
+char    put_sign(char *dir,va_list args2, int flag)
 {
         ft_putstr("+");
         return(0);
 }
-char    put_space(char *dir,va_list args2)
+char    put_space(char *dir,va_list args2, int flag)
 {
         ft_putstr("space");
          return(0);
 }
-char    put_zeroes(char *dir,va_list args2)
+char    put_zeroes(char *dir,va_list args2, int flag)
 {
         ft_putstr("zeroes");
          return(0);
 }
-char   put_len(char *dir,va_list args2)
+char   put_len(char *dir,va_list args2, int flag)
 {
         ft_putstr("len");
          return(0);
 }
-char    put_dec_precision(char *dir,va_list args2)
+/* char    put_dec_precision(char *dir,va_list args2, int flag)
 {
         ft_putstr("presision");
          return(0);
-}
-char    put_alternate(char *dir,va_list args2)
+} */
+char    put_alternate(char *dir,va_list args2, int flag)
 {
         ft_putstr("0x");
          return(0);
