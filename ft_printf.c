@@ -27,10 +27,9 @@ static fptrconv get_converter[] =
 		&print_str,
 		&print_c,
 		&conv_fetoa,
-		//&conv_otoa,
-		//&print_ptr,
-		//&print_n,
-
+		&conv_otoa,
+		&print_ptr,
+		&print_n,
 	};
 
 int ft_printf(const char *format, ...)
@@ -56,12 +55,13 @@ int ft_printf(const char *format, ...)
 		if (v.temp[v.i] == '%')
 		{
 			flag = parse(v.temp, v.i);
+			debug_number(flag, "flag");
 			while (ft_intstrchr(v.temp, '%', v.i) != -1)
 			{
 				print_the_middle(v.temp, find_first_flag(v.temp));
 				v.i = ft_intstrchr(v.temp, '%', v.i);
-				//debug_number(v.i, "v.i");
-				//debug_number(flag, "flag");
+	/* 			debug_number(v.i, "v.i");
+				debug_number(flag, "flag"); */
 				flag = parse(v.temp, v.i);
 			} 
 			v.i = ft_putcharfrom(v.temp, v.i, DIR_S, CONV_S) + v.i;
@@ -94,8 +94,8 @@ int	parse(char *to_parse, int i)
 
 		find_flag = loop_through(CONV_S, to_parse, i);
 		find_dir = loop_for_directives(DIR_S, to_parse, i);
-/* 		debug_number(find_flag, "flag");
-		debug_number(find_dir, "dir"); */
+		debug_number(find_flag, "flag");
+		debug_number(find_dir, "dir");
 		has_formating(to_parse, find_dir, args2, find_flag);
 		get_converter[find_flag](parsed, find_dir, args2);
 return(find_flag);

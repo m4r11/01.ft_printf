@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 11:14:27 by user              #+#    #+#             */
-/*   Updated: 2021/03/19 17:15:29 by user             ###   ########.fr       */
+/*   Updated: 2021/03/21 13:26:40 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ char   put_len(char *dir,va_list args2, int flag)
 /* char    put_dec_precision(char *dir,va_list args2, int flag)
 {
         ft_putstr("presision");
-         return(0);
+         return(0);x
 } */
 char    put_alternate(char *dir,va_list args2, int flag)
 {

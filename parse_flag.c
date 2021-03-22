@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 17:53:40 by user              #+#    #+#             */
-/*   Updated: 2021/03/18 12:12:09 by user             ###   ########.fr       */
+/*   Updated: 2021/03/21 12:56:11 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,18 @@ int    loop_through(char *flags, char *format, int j)
     int f;
     f = 0;
 	//debug_number(j, "jbefore while");
-	
+    if (format[j +1] == 'i')
+        return(1);
+
     while(format[j] !='\0')
     {
         if (format[j] == CONV_S[f])
             j++;
         i = 0;
         while (flags[i] != format[j] && flags[i] != '\0')
+        {
             i++;
+        }
         //debug_number(i, "wehere it stops");
         if (flags[i] == format[j])
         {

@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/19 17:23:47 by user             ###   ########.fr       */
+/*   Updated: 2021/03/21 19:33:08 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ typedef struct s_struct
 
 /*
 **  argument type for function, this will be something else
-** 	it's juts a placeholder in function 
+** 	it's juts a placeholder in function, can del this now
 */
 
 typedef struct s_type
@@ -130,7 +130,9 @@ void conv_fetoa(char *input, int has_format, va_list args2);
 void conv_dtoa(char *input, int has_format, va_list args2);
 void print_str(char *input, int has_format, va_list args2);
 void print_c(char *input, int has_format, va_list args2);
-
+void conv_otoa(char *input, int has_format, va_list args2);
+void print_ptr(char *input, int has_format, va_list args2);
+void print_n(char *input, int has_format, va_list args2);
 /*
 **  format directives func's_declared 
 */
@@ -198,6 +200,7 @@ int		ft_putcharfrom(char *s, int start, char *dir, char *flag);
 int		ft_intstrchr_flag(char *s, int c, int start);
 int find_first_flag(char *input);
 int   print_the_middle(char *input, int flag1_end);
+
 /*
 ** conv_numbers
 */
@@ -207,7 +210,7 @@ bool is_base_valid(char *str);
 void ft_putnbr_rebase(int number, int baseleng);
 void ft_putnbr_base(int nbr, char *base);
 void ft_putfloat(t_type type, va_list args2);
-
+void ft_putnbr_limit(int nb, int x);
 /*
 ** parse_directives.c
 */

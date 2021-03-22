@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 09:22:56 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/18 12:56:02 by user             ###   ########.fr       */
+/*   Updated: 2021/03/21 12:56:57 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,16 @@
 
 void conv_itoa(char *input, int has_format, va_list args2)
 {
-    if(has_format == -1)
-        ft_putstr("8");
-    int x;
-    x = va_arg(args2, int);
-    ft_putnbr(x);
+    signed int x;
+    //printf("i'mhere");
+    if (has_format == -1)
+    {
+        x = va_arg(args2, signed int);
+        //debug_number(x, "x");
+        ft_putnbr(x);
+    }
+    else 
+        return ;
 }
 void conv_xtoa(char *input, int has_format, va_list args2)
 {
@@ -143,4 +148,47 @@ void print_c(char *input, int has_format, va_list args2)
     }
     else 
         return ;
+}
+
+void conv_otoa(char *input, int has_format, va_list args2)
+{
+    ft_putc('8');
+return ;
+}
+
+void print_ptr(char *input, int has_format, va_list args2)
+{
+    long decimal;
+    long quotient;
+    long remainder;
+    char *hexadecimal;
+    long *print;
+    print = va_arg(args2, long *);
+    
+    if (!(hexadecimal = malloc(sizeof(char *))))
+        return;
+    int j = 0;
+    quotient = *(long*)&print;
+    if (quotient == 0)
+        ft_putc('0');
+    ft_putc('0');
+    ft_putc('x');
+    while (quotient != 0)
+    {
+        remainder = quotient % 16;
+        if (remainder < 10)
+            hexadecimal[j++] = 48 + remainder;
+        else
+            hexadecimal[j++] = 55 + remainder;
+        quotient = quotient / 16;
+    }
+    while (j-- >0)
+        ft_putc(ft_tolower(hexadecimal[j]));
+    free(hexadecimal);
+    return;
+}
+
+void print_n(char *input, int has_format, va_list args2)
+{
+    ft_putc('n');
 }

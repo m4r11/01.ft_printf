@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conv_numbers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 20:01:13 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/09 18:11:55 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/03/21 19:34:10 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void ft_putnbr(int nb)
 {
-	t_struct v;
+    //debug_number(nb, "nb");
     if (nb <= INT_MAX && nb >= INT_MIN)
     {
         if (nb == INT_MIN)
@@ -36,7 +36,34 @@ void ft_putnbr(int nb)
         else
             ft_putc(nb + '0');
     }
-    //counter(1);
+    return;
+}
+
+void ft_putnbr_limit(int nb, int x)
+{
+    //debug_number(nb, "nb");
+    if (nb <= INT_MAX && nb >= INT_MIN)
+    {
+        if (nb == INT_MIN)
+        {
+            ft_putc('-');
+            ft_putc('2');
+            ft_putnbr(147483648);
+        }
+        else if (nb < 0)
+        {
+            ft_putc('-');
+            ft_putnbr(-nb);
+        }
+        else if (nb > 9)
+        {
+            ft_putnbr(nb / 10);
+            ft_putnbr(nb % 10);
+        }
+        else
+            ft_putc(nb + '0');
+    }
+    return;
 }
 
 void ft_putnbr_rebase(int number, int baselen)
