@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utilities.c                                     :+:      :+:    :+:   */
+/*   ft_generic_tools.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 17:20:24 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/23 21:16:43 by user             ###   ########.fr       */
+/*   Updated: 2021/03/24 12:16:01 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void ft_putstr(char *str)
 	}
 }
 
-char ft_putstr_limit(char *str, int limit)
+/* char ft_putstr_limit(char *str, int limit)
 {
 	t_struct v;
 	int i;
@@ -50,7 +50,7 @@ char ft_putstr_limit(char *str, int limit)
 		//counter(1);
 	}
 	return(0);
-}
+} */
 
 int ft_strlen(char *str)
 {
@@ -168,7 +168,7 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-int		ft_intstrchr(char *s, int c, int start)
+/* int		ft_intstrchr(char *s, int c, int start)
 {
 	int i;
 	i = start;
@@ -179,7 +179,7 @@ int		ft_intstrchr(char *s, int c, int start)
 	if (c == s[i])
 		return(i);
 	return(-1);
-}
+} */
 
 int		ft_str_is_numeric(char *str)
 {
@@ -223,7 +223,7 @@ int			ft_simple_atoi(const char *str)
 	return (ft_ratoi(str, 0));
 }
 
-char	*print_x_times(int n, char c)
+/* char	*print_x_times(int n, char c)
 {
 	//debug_number(n, "convertedn");
 	while (n > 0)
@@ -232,9 +232,9 @@ char	*print_x_times(int n, char c)
 		n--;
 	}
 	return(0);
-}
+} */
 
-int  get_index(char *s1, char *s2)
+/* int  get_index(char *s1, char *s2)
 {
     int j;
 	int mini_index = INT_MAX;
@@ -263,7 +263,7 @@ int  get_index(char *s1, char *s2)
 		return(NO_FORMAT);
     return(0);
 }
-
+ */
 int	ft_isalpha(int c)
 {
 	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
@@ -340,7 +340,7 @@ int arg_number(char *to_parse)
 	return(counter);
 }
 
-int		ft_putcharfrom(char *s, int start, char *dir, char *flag)
+/* int		ft_putcharfrom(char *s, int start, char *dir, char *flag)
 {
 	int i;
 	i = start;
@@ -373,8 +373,8 @@ int		ft_putcharfrom(char *s, int start, char *dir, char *flag)
     }
 	return(len);
 }
-
-int		ft_intstrchr_flag(char *s, int c, int start)
+ */
+/* int		ft_intstrchr_flag(char *s, int c, int start)
 {
 	int i;
 	i = start;
@@ -383,9 +383,9 @@ int		ft_intstrchr_flag(char *s, int c, int start)
 	if (c == s[i])
 		return(i);
 	return(-1);
-}
+} */
 
-int find_first_flag(char *input)
+/* int find_first_flag(char *input)
 {
     int i;
     int j;
@@ -417,9 +417,9 @@ int find_first_flag(char *input)
         flag1_end--;
     }
     return(0);
-}
+} */
 
-int   print_the_middle(char *input, int flag1_end)
+/* int   print_the_middle(char *input, int flag1_end)
 {
     int start;
     int middle;
@@ -439,8 +439,8 @@ int   print_the_middle(char *input, int flag1_end)
             middle++;
     }
     return(0);
-}
-
+} */
+/* 
 int     find_width(char *dir, int start)
 {
     int width;
@@ -451,7 +451,7 @@ int     find_width(char *dir, int start)
         return(width = ft_simple_atoi(&dir[start+1]));
     return(0);
 }
-
+ */
 /* int find_first_flag(char *input)
 {
     int i;

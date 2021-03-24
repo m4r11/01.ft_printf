@@ -6,7 +6,7 @@
 #    By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/27 16:16:23 by mvaldeta          #+#    #+#              #
-#    Updated: 2021/03/19 17:15:40 by user             ###   ########.fr        #
+#    Updated: 2021/03/24 12:45:37 by user             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,39 +16,41 @@
 # DESC:
 # (｡◕‿◕｡)
 #
-SRC =	conv_numbers.c\
-		ft_printf.c\
-		ft_utilities.c\
-		conv_operator.c\
-		deploy_format.c\
-		directives_operator.c\
-		parse_directives.c\
-		parse_flag.c\
-		field.c\
-		star.c\
-		precision.c
+SRCS		=	$(wildcard ./01_srcs/*.c)
 
-OBJ = $(SRC:.c=.o)
+OBJS		= ${SRCS:.c=.o}
 
-CC = gcc
-RM = rm -f
+INCDIR		= 00_includes
 
-NAME = libftprintf.a
+NAME		= libftprintf.a
 
-$(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+CC			= gcc
+
+ARRC		= ar rcs
+
+RM			= rm -f
+
+#CFLAGS		= -Wall -Wextra Werror 
+
+.c.o: 
+			${CC} -g ${CFLAGS} -c $^ -o ${<:.c=.o} -I${INCDIR}
+
+$(NAME):	$(OBJS)
+				${ARRC} $(NAME) $(OBJS)
+
+all:		${NAME}
+
+bonus:		${NAME}
 
 clean:
-	$(RM) $(OBJ) $(BONUS_OBJ)
+				$(RM) $(OBJS) $(BONUS_OBJS)
 
-fclean: clean
-	$(RM) $(NAME)
+fclean:		clean
+				$(RM) $(NAME)
 
-re: fclean
-		$(NAME)
+re:			fclean all
 
-so:
-	$(CC) -fPIC -c $(CFLAGS) $(SRC)
-	gcc -shared -o libftprintf.so $(OBJ)
+run:		all
+				./03_debug/debugs.a
 
-.PHONY: all clean fclean re bonus
+.PHONY:		all clean fclean re bonus
