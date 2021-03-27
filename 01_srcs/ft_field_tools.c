@@ -6,38 +6,30 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 17:34:59 by user              #+#    #+#             */
-/*   Updated: 2021/03/27 14:52:13 by user             ###   ########.fr       */
+/*   Updated: 2021/03/27 20:33:12 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char    put_spaces_before_s(char *x1, int converted, int len)
+char    ft_minor_field_star_fetch(va_list args2, int x, int converted)
 {
-    print_x_times(converted - len, ' ');
-    ft_putstr(x1);
-    return(0);
-}
-
-char    put_spaces_afer_s(char *x1, int converted, int len)
-{
-    ft_putstr(x1);
-    print_x_times(converted - len, ' ');
-    return(0);
-}
-
-char    put_spaces_before_c(int x, int converted)
-{
-    print_x_times(converted - 1, ' ');
-    ft_putc(x);
-    exit(0);
-}
-
-char    put_spaces_afer_c(int x, int converted)
-{
-    ft_putc(x);
-    print_x_times(converted - 1, ' ');
-    return(0);
+        x = va_arg(args2, int);
+        converted = va_arg(args2, int);
+        if (x >= 0)
+        {
+            ft_putc(converted);
+            print_x_times(x - 1, ' ');
+            return (0);
+        }
+        if (x < 0)
+        {
+            x *= -1;
+            ft_putc(converted);
+            print_x_times(x - 1, ' ');
+            return (0);
+        }
+        return(0);
 }
 
 char    ft_copy(char *s1, char *s2)

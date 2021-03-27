@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 17:59:38 by user              #+#    #+#             */
-/*   Updated: 2021/03/27 14:48:30 by user             ###   ########.fr       */
+/*   Updated: 2021/03/27 20:31:44 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,31 +46,12 @@ char field_s(char *dir, va_list args2)
 
 char field_c_combos(char *dir, va_list args2)
 {
-
-    int x;
+    t_dir_variables dv;
     char to_convert[500];
-    int converted;
-    char *temp;
-    
-    temp = (ft_strchr(dir, '%') + 1);
-    if (temp[0] == '-' && temp[1] == '*')
-    {
-        x = va_arg(args2, int);
-        converted = va_arg(args2, int);
-        if (x >= 0)
-        {
-            ft_putc(converted);
-            print_x_times(x - 1, ' ');
-            return (0);
-        }
-        if (x < 0)
-        {
-            x *= -1;
-            ft_putc(converted);
-            print_x_times(x - 1, ' ');
-            return (0);
-        }
-    }
+
+    dv.temp = (ft_strchr(dir, '%') + 1);
+    if (dv.temp[0] == '-' && dv.temp[1] == '*')
+        return(ft_minor_field_star_fetch(args2, dv.x, dv.converted));
     return (0);
 }
 

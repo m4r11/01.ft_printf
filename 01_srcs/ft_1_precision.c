@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 17:01:19 by user              #+#    #+#             */
-/*   Updated: 2021/03/27 13:02:07 by user             ###   ########.fr       */
+/*   Updated: 2021/03/27 20:16:06 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,94 +14,27 @@
 
 char precision_s(char *dir, va_list args2)
 {
-    int start;
-    int real;
-    int min_c;
-    int width;
-    int new;
     static int pin;
-    char  *print;
-    int star_value;
-    print = (va_arg(args2, char *));
-    start = ft_intstrchr_flag(dir, '%', pin);
-    if (dir[start + 1] == '*')
-        start = ft_intstrchr_flag(dir, '%', 3);
-/*     debug_number(start, "start");
-    debug_str(&dir[start], "dirstart"); */
-    real = ft_intstrchr(dir, '.', start) + 1;
-    width = ft_atoi(&dir[start + 1]);
-    min_c = ft_atoi(&dir[real]);
-    if (print == NULL)
-    {
+    t_dir_variables dv;
 
-       if (width < 0)
-        {
-            ft_putstr_limit("(null)", min_c);
-            width *= -1;
-            print_x_times(width - (min_c), ' ');
-            return (0);
-        }
-        else
-        {
-            print_x_times(width - (min_c), ' ');
-            ft_putstr_limit("(null)", min_c);
-            return (0);
-        }
-
-        /*   debug_number(width, "w");
-        debug_number(min_c, "minc"); */
-        return (0);
-    }
-    if (dir[real - 2] == '*')
-    {
-        new = ft_intstrchr(dir, '*', start) + 1;
-        real = ft_intstrchr(dir, '%', new) + 1;
-        min_c = ft_atoi(&dir[real + 1]);
-        ft_putstr_limit(print, min_c);
-        return (0);
-    }
+    dv.print = (va_arg(args2, char *));
+    dv.start = ft_intstrchr_flag(dir, '%', pin);
+    if (dir[dv.start + 1] == '*')
+        dv.start = ft_intstrchr_flag(dir, '%', 3);
+    dv.real = ft_intstrchr(dir, '.', dv.start) + 1;
+    dv.width = ft_atoi(&dir[dv.start + 1]);
+    dv.min_c = ft_atoi(&dir[dv.real]);
+    if (dv.print == NULL)
+        return(ft_print_null(dv.print, dv.width, dv.min_c));
+    if (dir[dv.real - 2] == '*')
+        return(ft_wrong_directive(dir, dv.print, dv.width, dv.min_c));
     pin += 1;
-    if (ft_strlen(print) == min_c)
-    {
-        if (width > (ft_strlen(print)))
-            print_x_times(width - (ft_strlen(print)), ' ');
-        ft_putstr(print);
-        if (width < 0)
-        {
-            width *= -1;
-            print_x_times(width - (ft_strlen(print)), ' ');
-        }
-        return (0);
-    }
-    if (ft_strlen(print) < min_c)
-    {
-        if (width > (ft_strlen(print)))
-            print_x_times(width - (ft_strlen(print)), ' ');
-        ft_putstr(print);
-        if (width < 0)
-        {
-            width *= -1;
-            print_x_times(width, ' ');
-        }
-        return (0);
-    }
+    if (ft_strlen(dv.print) == dv.min_c)
+        return(ft_micro_same_len(dv.print, dv.width, dv.min_c));
+    if (ft_strlen(dv.print) < dv.min_c)
+        return(ft_micro_less_len(dv.print, dv.width, dv.min_c));
     else
-    {
-        if (width < 0)
-        {
-            ft_putstr_limit(print, min_c);
-            width *= -1;
-            print_x_times(width - (min_c), ' ');
-            return (0);
-        }
-        else
-        {
-            print_x_times(width - (min_c), ' ');
-            ft_putstr_limit(print, min_c);
-            return (0);
-        }
-    }
-    //todo: s combos :)
+        return(ft_micro_less_width(dv.print, dv.width, dv.min_c));
     return (0);
 }
 

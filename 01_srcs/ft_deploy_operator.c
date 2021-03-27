@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 11:14:27 by user              #+#    #+#             */
-/*   Updated: 2021/03/25 18:56:21 by user             ###   ########.fr       */
+/*   Updated: 2021/03/27 17:57:12 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char    put_space(char *dir,va_list args2, int flag)
 }
 char    put_zeroes(char *dir,va_list args2, int flag)
 {
-        if (flag = 8)
+        if (flag == 8)
                 return(0);     
          return(0);
 }
