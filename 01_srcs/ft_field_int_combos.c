@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 16:49:55 by user              #+#    #+#             */
-/*   Updated: 2021/03/28 21:08:55 by user             ###   ########.fr       */
+/*   Updated: 2021/03/29 12:57:07 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,75 @@ char field_int_combos(char *dir, va_list args2)
         }
         return (0);
     }
-    if(dv.temp[0] == '-' && dv.temp[1] == '0' && dv.temp[2] == '*')
+    if (dv.temp[0] == '-' && dv.temp[1] == '0' && dv.temp[2] == '*')
     {
         dv.width = va_arg(args2, int);
         dv.min_c = ft_atoi(&to_convert[4]);
         dv.x = va_arg(args2, int);
-        print_x_times(dv.min_c - ft_intlen(dv.x), '0');
-        ft_putnbr(dv.x);
-        if(dv.min_c == 0)
+        /*         debug_number(dv.min_c, "m");
+        debug_number(dv.width, "w");
+        debug_number(dv.x, "x"); */
+        if (dv.width < 0 && dv.x < 0)
         {
-            print_x_times(dv.width - ft_intlen(dv.x), ' ');
-            return(0);
+            /*dont touch this */
+            ft_putc('-');
+            dv.x *= -1;
+            print_x_times(dv.min_c - ft_intlen(dv.x), '0');
+            ft_putnbr(dv.x);
+            print_x_times(dv.width - dv.min_c - ft_intlen(dv.x) - 1, ' ');
+            return (0);
         }
-        print_x_times(dv.width - dv.min_c, ' ');
- /*        debug_number(dv.width, "w");
+        if (dv.width < 0 && dv.x >= 0)
+        {
+            /*dont touch this */
+            print_x_times(dv.min_c - ft_intlen(dv.x), '0');
+            ft_putnbr(dv.x);
+            dv.width *= -1;
+            if (dv.min_c < ft_intlen(dv.x))
+            {
+                print_x_times(dv.width - ft_intlen(dv.x), ' ');
+                return (0);
+            }
+            print_x_times(dv.width - dv.min_c, ' ');
+            return (0);
+        }
+        if (dv.width > 0 && dv.x < 0)
+        {
+            /*dont touch this 19 */
+            ft_putc('-');
+            // debug_number(dv.min_c, "m");
+            if (dv.min_c == 0)
+            {
+                dv.x *= -1;
+                ft_putnbr(dv.x);
+                print_x_times(dv.width - ft_intlen(dv.x) - 1, ' ');
+                return (0);
+            }
+            dv.x *= -1;
+            print_x_times(dv.min_c - ft_intlen(dv.x), '0');
+            ft_putnbr(dv.x);
+            if (dv.min_c < ft_intlen(dv.x))
+            {
+                print_x_times(dv.width - ft_intlen(dv.x) - 1, ' ');
+                return (0);
+            }
+            print_x_times(dv.width - dv.min_c - 1, ' ');
+            return (0);
+        }
+        if (dv.min_c == 0)
+        {
+            /*dont touch this */
+            print_x_times(dv.width - ft_intlen(dv.x), ' ');
+            return (0);
+        }
+        if (dv.width > 0 && dv.min_c > 0 && dv.x > 0)
+        {
+            print_x_times(dv.min_c - ft_intlen(dv.x), '0');
+            ft_putnbr(dv.x);
+            print_x_times(dv.width - dv.min_c, ' ');
+            return (0);
+        }
+        /*       debug_number(dv.width, "w");
         debug_number(dv.min_c, "m");
         debug_number(dv.x, "x"); */
     }

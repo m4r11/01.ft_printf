@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:49:51 by user              #+#    #+#             */
-/*   Updated: 2021/03/28 16:17:40 by user             ###   ########.fr       */
+/*   Updated: 2021/03/29 13:56:53 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,39 @@ char greater_len(int len, int min_c, int width, int print)
     {
         ft_micro_great_width_great_len(width, min_c, len);
         ft_putnbr(print);
+        return(0);
     }
-    if (width >= 0 && print < 0)
+    if (width >= 0 && print < 0 && len > width)
     {
         ft_putc('-');
         ft_micro_great_width_great_len(width, min_c, len);
         ft_putnbr(print * -1);
+        return(0);
     }
     if(width < 0 && min_c < len)
     {
         width *= -1;
         ft_putnbr(print);
         print_x_times(width - len, ' ');
+        return(0);
     }
+    if(width < 0 && min_c == len && print < 0)
+    {
+        width *= -1;
+        ft_putc('-');
+        print_x_times(min_c - ft_intlen(print * -1), '0');
+        ft_putnbr(print * -1);
+        print_x_times(width - len - 1, ' ');
+        return(0);
+    }
+    if (width >= 0 && print < 0 && width > min_c)
+     {
+         print_x_times(width - min_c - 1, ' ');
+          ft_putc('-');
+          print_x_times(min_c - ft_intlen(print * -1), '0');
+          ft_putnbr(print * -1);
+          return(0);
+     }
     else    
     {
         width *= -1;
@@ -70,8 +90,30 @@ char greater_len(int len, int min_c, int width, int print)
     return (0);
 }
 
+char zero_min_c(int len, int min_c, int width, int print)
+{
+    if (width > 0)
+    {
+        print_x_times(width - ft_intlen(print), ' ');
+        ft_putnbr(print);
+    }
+    if (width < 0)
+    {
+        ft_putnbr(print);
+        width *= -1;
+        print_x_times(width - ft_intlen(print), ' ');
+    }
+    return(0);
+}
+
 char precision_op(int len, int min_c, int width, int print)
 {
+/*     debug_number(len, "len");
+    debug_number(width, "w");
+    debug_number(min_c, "m");
+    debug_number(print, "p"); */
+    if (min_c == 0)
+        return(zero_min_c(len, min_c, width, print));
     if (len < min_c)
         return (minor_len(len, min_c, width, print));
     if (len >= min_c)

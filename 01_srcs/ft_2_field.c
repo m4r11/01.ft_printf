@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 17:59:38 by user              #+#    #+#             */
-/*   Updated: 2021/03/28 20:33:36 by user             ###   ########.fr       */
+/*   Updated: 2021/03/29 14:28:08 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,10 @@ char put_field(char *dir, va_list args2, int flag)
         return (field_int_combos(dir, args2));
     if (dv.temp[0] == '0' && dv.temp[1] == '*')
         return(zero_int_combos(dir, args2));      
+    if (dv.temp[0] == '0' && dv.temp[2] == '.')
+        return(zero_int_combos(dir, args2));      
+    if (dv.temp[0] == '0' && ft_isdigit(dv.temp[1]))
+        return(zero_int_combos(dir, args2));
     if (((dv.temp[0] == '-' || ft_isdigit(dv.temp[0]) == 1) && dv.temp[1] == '.') ||
         dv.temp[2] == '.' || dv.temp[3] == '.')
         return (precision_int(dir, args2));

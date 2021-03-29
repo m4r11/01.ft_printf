@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 17:01:19 by user              #+#    #+#             */
-/*   Updated: 2021/03/28 16:48:46 by user             ###   ########.fr       */
+/*   Updated: 2021/03/29 16:47:46 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,11 @@ char precision_int(char *dir, va_list args2)
     real = (ft_intstrchr(dir, '.', start));
     width = find_width(dir, start);
     min_c = ft_atoi(&dir[real + 1]);
-    if (min_c == 0)
-        return (0);
     position += 1;
     print = va_arg(args2, int);
+/*     debug_number(print, "p");
+    debug_number(min_c, "m");
+    debug_number(width, "d"); */
     int len = ft_intlen(print);
     if (real == -1 && width == 0)
         return (0);
@@ -91,6 +92,13 @@ char precision_int(char *dir, va_list args2)
         return (0);
     if ((min_c == 0 && ft_isalpha(dir[real])) || real == -1)
         return (0);
+    if(width == 0 && min_c == 0 && print != 0)
+        ft_putnbr(print);
+    if(print == 0 && min_c == 0)
+    {
+        print_x_times(width, ' ');
+        return(0);
+    }
     precision_op(len, min_c, width, print);
     position += real;
     return (0);
@@ -103,7 +111,7 @@ char put_dec_precision(char *dir, va_list args2, int flag)
         return(star_s(dir, args2));
     if (flag == 8)
         return (precision_s(dir, args2));
-    if (flag == 0 || flag == 13)
+    if (flag == 0 || flag == 1 || flag == 13)
         return (precision_int(dir, args2));
     return (0);
 }

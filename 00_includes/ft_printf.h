@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/28 16:53:53 by user             ###   ########.fr       */
+/*   Updated: 2021/03/29 16:53:00 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,6 +223,7 @@ char    ft_micro_less_width(char *print, int width, int min_c);
 /*
 ** precision_tools.c
 */
+char zero_min_c(int len, int min_c, int width, int print);
 char    minor_len(int len, int min_c, int width, int print);
 char    greater_len(int len, int min_c, int width, int print);
 char	precision_op(int len, int min_c, int width, int print);
@@ -238,6 +239,11 @@ char	precision_int_combos(char *dir, va_list args2);
 ** zero.c
 */
 char    zero_int_combos(char *dir, va_list args2);
+char	zero_star_dot_star(va_list args2);
+char 	zero_star_dot_digi(va_list args2, char *to_convert);
+char	zero_star_flag(va_list args2);
+char 	zero_2digi_dot_flag(va_list args2, char *to_convert);
+char 	zero_1digit_dot_flag(va_list args2, char *to_convert);
 
 /*
 ** ft_general_utilities.c
