@@ -6,13 +6,13 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:02:38 by user              #+#    #+#             */
-/*   Updated: 2021/03/29 17:32:26 by user             ###   ########.fr       */
+/*   Updated: 2021/03/29 18:57:55 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-/* ->|%0*.*|<- */
 
+/* ->| %0*.* |<- */
 char zero_star_dot_star(va_list args2)
 {
     t_dir_variables dv;
@@ -30,7 +30,7 @@ char zero_star_dot_star(va_list args2)
     ft_putnbr(dv.x);
     return (0);
 }
-
+/* ->| %0*.0 |<- */
 char zero_star_dot_digi(va_list args2, char *to_convert)
 {
     t_dir_variables dv;
@@ -106,7 +106,6 @@ char zero_star_dot_digi(va_list args2, char *to_convert)
     ft_putnbr(dv.x);
     return (0);
 }
-
 /* ->| %0*d |<- */
 char zero_star_flag(va_list args2)
 {

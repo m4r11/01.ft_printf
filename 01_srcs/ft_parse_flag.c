@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_flag.c                                       :+:      :+:    :+:   */
+/*   ft_parse_flag.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 17:53:40 by user              #+#    #+#             */
-/*   Updated: 2021/03/21 12:56:11 by user             ###   ########.fr       */
+/*   Updated: 2021/03/29 23:05:39 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,23 @@
 int    loop_through(char *flags, char *format, int j)
 {
     int i;
-    char *start = ft_strchr(format, '%');
-    int f;
-    f = 0;
-	//debug_number(j, "jbefore while");
+
     if (format[j +1] == 'i')
         return(1);
 
-    while(format[j] !='\0')
+    while(format[j] != END_DIR)
     {
+        //debug_str(&format[j], "format");
         if (format[j] == CONV_S[f])
-            j++;
+            j+=1;
         i = 0;
         while (flags[i] != format[j] && flags[i] != '\0')
         {
-            i++;
+            //debug_str(&flags[i], "flags");
+            i+=1;
         }
-        //debug_number(i, "wehere it stops");
+   /*      debug_number(i, "I");
+        debug_number(j, "J"); */
         if (flags[i] == format[j])
         {
             return(i);
@@ -39,8 +39,9 @@ int    loop_through(char *flags, char *format, int j)
         }
         else 
             i = 0; 
-            j++;
-            f++;   
+            j+=1;
+      /*       debug_number(i, "i");
+            debug_number(j, "j"); */
     }
 return(-1);
 }

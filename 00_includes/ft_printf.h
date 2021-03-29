@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/29 16:53:00 by user             ###   ########.fr       */
+/*   Updated: 2021/03/29 23:16:38 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,6 +202,9 @@ char	field_c_combos(char *dir,va_list args2);
 char	field_c(char *dir,va_list args2);
 char	field_s(char *dir,va_list args2);
 char    field_int_combos(char *dir, va_list args2);
+char    field_u(char *dir, va_list args2);
+char    put_spaces_before_u(int x, int converted);
+char    put_spaces_afer_u(int x, int converted);
 
 
 /*

@@ -1,12 +1,12 @@
- /* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 22:11:39 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/09 18:09:35 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/03/29 23:06:57 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,29 +29,27 @@ static fptrconv get_converter[] =
 		&conv_otoa,
 		&print_ptr,
 		&print_n,
-	};
+};
 
 int ft_printf(const char *format, ...)
 {
-   t_struct v;
-   t_type type;
-;
-   va_start(args, format);
-   va_copy(args2, args);
-   int argnum;
-   
-    v.temp = ft_strdup(format);
-    int len = ft_strlen(v.temp);
+	t_struct v;
+	t_type type;
+	;
+	va_start(args, format);
+	va_copy(args2, args);
+	int argnum;
+
+	v.temp = ft_strdup(format);
+	int len = ft_strlen(v.temp);
 	argnum = arg_number(v.temp);
 	int t;
 	int flag;
 	char *midle_print;
 
-
-  	v.i = 0;
- 	while (v.temp[v.i])
+	v.i = 0;
+	while (v.temp[v.i])
 	{
-		//debug_number(v.i, "vi");
 		if (v.temp[v.i] == '%')
 		{
 			flag = parse(v.temp, v.i);
@@ -60,34 +58,34 @@ int ft_printf(const char *format, ...)
 				print_the_middle(v.temp, find_first_flag(v.temp));
 				v.i = ft_intstrchr(v.temp, '%', v.i);
 				flag = parse(v.temp, v.i);
-			} 
+			}
 			v.i = ft_putcharfrom(v.temp, v.i, flag);
 			if (v.i == END)
 				break;
 		}
-		else 
+		else
 			ft_putc(v.temp[v.i]);
 		v.i++;
 	}
-   va_end(args);
-   free(v.temp);
-   return (counter(0));
+	va_end(args);
+	free(v.temp);
+	return (counter(0));
 }
 
-int	parse(char *to_parse, int i)
+int parse(char *to_parse, int i)
 {
 	int find_dir;
-    int find_flag;
+	int find_flag;
 	char *parsed = ft_strchr(to_parse, '%');
 	int len = ft_strlen(to_parse);
 
-		find_flag = loop_through(CONV_S, to_parse, i);
-		find_dir = loop_for_directives(DIR_S, to_parse, i);
-/* 		debug_number(find_flag, "flag");
-		debug_number(find_dir, "dir"); */
-		has_formating(parsed, find_dir, args2, find_flag);
-		get_converter[find_flag](parsed, find_dir, args2);
-return(find_flag);
+	find_flag = loop_through(CONV_S, to_parse, i);
+	find_dir = loop_for_directives(DIR_S, to_parse, i);
+/* 	debug_number(find_flag, "flag");
+	debug_number(find_dir, "dir"); */
+	has_formating(parsed, find_dir, args2, find_flag);
+	get_converter[find_flag](parsed, find_dir, args2);
+	return (find_flag);
 }
 
 /* 
