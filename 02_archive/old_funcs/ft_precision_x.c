@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_precision_x.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 17:01:00 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/02 15:13:31 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/03 20:31:15 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char precision_x(char *dir, va_list args2)
     if (dir[start + 1] == '-' && dir[start + 2] == '*' && dir[start + 3] == '.')
         return (precision_x_combos(&dir[start], args2, dv.passflag));
     real = (ft_intstrchr(dir, '.', start));
-    width = find_width(dir, start);
+   width = find_width(dir, start, args2);
     min_c = ft_atoi(&dir[real + 1]);
     position += 1;
     print = va_arg(args2, long);

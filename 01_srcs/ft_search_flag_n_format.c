@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 17:53:40 by user              #+#    #+#             */
-/*   Updated: 2021/04/01 08:57:27 by user             ###   ########.fr       */
+/*   Updated: 2021/04/04 21:46:17 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ int    loop_through(char *flags, char *format, int j)
 {
     int i;
 
-    if (format[j +1] == 'i')
+    if (format[j + 1] == 'i')
         return(1);
 
+    if(format[j + 1] == '%')
+        return(15);
     while(format[j] != END_DIR)
     {
         //debug_str(&format[j], "format");

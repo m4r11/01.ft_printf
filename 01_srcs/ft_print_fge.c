@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_conv_fge.c                                      :+:      :+:    :+:   */
+/*   ft_print_fge.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 11:57:54 by user              #+#    #+#             */
-/*   Updated: 2021/03/24 11:59:02 by user             ###   ########.fr       */
+/*   Updated: 2021/04/03 20:36:19 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void conv_ftoa(char *input, int has_format, va_list args2)
+void conv_ftoa(char *input,int index, int has_format, va_list args2)
 {
     double f;
     signed long int decipart;
@@ -33,7 +33,7 @@ void conv_ftoa(char *input, int has_format, va_list args2)
     ft_putnbr(decipart);
 }
 
-void conv_fetoa(char *input, int has_format, va_list args2)
+void conv_fetoa(char *input,int index, int has_format, va_list args2)
 {
     double f;
     signed long int decipart;

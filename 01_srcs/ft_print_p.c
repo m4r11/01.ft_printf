@@ -3,28 +3,207 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_p.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 12:00:12 by user              #+#    #+#             */
-/*   Updated: 2021/04/02 15:52:06 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/04 21:58:57 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void print_ptr(char *input, int has_format, va_list args2)
+int pad_left_p(long print, int to_pad, int min_c, int zero)
 {
-    long *print;
+    if (min_c > to_pad)
+        to_pad = min_c;
+    if (min_c == 0 && zero != -1)
+        if (min_c == 0 && zero == -1)
+        {
+            if (print == 0)
+            {
+                ft_put_address_up(print, min_c, to_pad);
+                print_x_times(to_pad - 3, ' ');
+                return (0);
+            }
+            print_x_times(to_pad - ft_u_intlen(print), ' ');
+            ft_put_address_up(print, min_c, to_pad);
+            return (0);
+        }
+    if (to_pad > min_c)
+    { /* unico a func patra ja */
+        if (print == 0)
+        {
+            print_x_times(to_pad - 3, ' ');
+            ft_put_address_up(print, min_c, to_pad);
+            return (0);
+        }
+        if (print > 0)
+        {
+            print_x_times(to_pad - ft_hexlen(print), ' ');
+            ft_put_address_up(print, min_c, to_pad);
+            return (0);
+        }
+        ft_put_address_up(print, min_c, to_pad);
+        print_x_times(to_pad - ft_u_intlen(print), ' ');
+        return (0);
+    }
+    print_x_times(min_c - to_pad, ' ');
+    ft_put_address_up(print, min_c, to_pad);
+    return (0);
+}
+
+int pad_right_p(long print, int to_pad, int min_c, int zero)
+{
+    if (min_c == 0 && print != 0)
+    {
+        ft_put_address_up(print, min_c, to_pad);
+        print_x_times((to_pad * -1) - ft_hexlen(print), ' ');
+        return (0);
+    }
+    if (min_c == 0 && print == 0)
+    {
+        print_x_times((to_pad * -1), ' ');
+        return (0);
+    }
+    if (min_c > 0 && print == 0)
+    {
+        print_x_times(min_c, '0');
+        return (0);
+    }
+    if (min_c != -1 && min_c < ft_xlen(print))
+    {
+        ft_put_address_up(print, min_c, to_pad);
+        print_x_times((to_pad * -1) - ft_xlen(print), ' ');
+        return (0);
+    }
+    if (min_c == -1)
+    {
+        /* escrevei aqu */
+        if (print == 0 || print == 1)
+        {
+            ft_put_address_up(print, min_c, to_pad);
+            print_x_times((to_pad * -1) - 3, ' ');
+            return (0);
+        }
+        if (print < 0)
+        {
+            ft_put_address_up(print, min_c, to_pad);
+            print_x_times((to_pad * -1) - ft_u_intlen(print) - 1, ' ');
+            return (0);
+        }
+        /* tasqui */
+        ft_put_address_up(print, min_c, to_pad);
+        print_x_times((to_pad * -1) - ft_hexlen(print), ' ');
+        return (0);
+    }
+    ft_put_address_up(print, min_c, to_pad);
+    print_x_times((to_pad * -1) - min_c, ' ');
+    return (0);
+}
+
+int format_address(long print, int to_pad, int min_c, int zero)
+{
+    if (to_pad > 0)
+        return (pad_left_p(print, to_pad, min_c, zero));
+    if (to_pad < 0)
+        return (pad_right_p(print, to_pad, min_c, zero));
+    if (to_pad == 0 && min_c > 0)
+        ft_put_address_up(print, min_c, to_pad);
+    else
+        return (0);
+    return (0);
+}
+
+void print_ptr(char *input, int index, int has_format, va_list args2)
+{
+    long q;
+    int width;
+    int min_c;
+    int zero = ft_intstrchr(input, '0', index);
 
     if (has_format == -1)
     {
-        print = va_arg(args2, long *);
-        ft_put_address(input, print);
-    }  
+        q = va_arg(args2, long);
+        ft_put_address(input, q);
+    }
+    else
+    {
+        width = find_width_p(input, index, args2);
+        min_c = find_precision(input, ft_intstrchr(input, '.', index), args2);
+        q = va_arg(args2, int);
+        format_address(q, width, min_c, zero);
+        return;
+    }
     return;
 }
 
-char position_address(char *dir, va_list args2)
+void ft_put_address_up(long print, int min_c, int flag)
+{
+    long decimal;
+    long quotient;
+    long remainder;
+    char hexadecimal[100];
+    char *longmin;
+    char *ulongmax;
+    int len;
+    int j = 0;
+
+    if (print == 0)
+    {
+        ft_putstr("0x0");
+        if (min_c > 0 && print == 0)
+            print_x_times(min_c - 3, '0');
+        return;
+    }
+    if (print == 1)
+    {
+        ft_putstr("0x1");
+        if (min_c > 0 && print == 0)
+            print_x_times(min_c - 3, '0');
+        return;
+    }
+    if (print == LONG_MIN)
+    {
+        longmin = "0x8000000000000000";
+        print_x_times(min_c - (ft_strlen(longmin)), '0');
+        ft_putstr(longmin);
+        return;
+    }
+    if (print == UINT_MAX + 1)
+    {
+        ft_putc(' ');
+        return;
+    }
+    quotient = print;
+    ft_putc('0');
+    ft_putc('x');
+    while (quotient != 0)
+    {
+        if (quotient < 0)
+        {
+            quotient = UINT_MAX - ((print * -1) - 1);
+        }
+        remainder = quotient % 16;
+        if (remainder < 10)
+            hexadecimal[j++] = 48 + remainder;
+        else
+            hexadecimal[j++] = 55 + remainder;
+        quotient = quotient / 16;
+    }
+    len = ft_is_hex(hexadecimal);
+    if (min_c > 0 && print != 0)
+    {
+        if (ft_intlen(print) == 1)
+            print_x_times(min_c - 1, '0');
+        else
+            print_x_times(min_c - len, '0');
+    }
+    while (j-- > 0)
+        ft_putc(ft_tolower(hexadecimal[j]));
+    return;
+}
+
+/* char position_address(char *dir, va_list args2)
 {
     static int pin;
     char to_convert[500];
@@ -89,4 +268,4 @@ char position_address(char *dir, va_list args2)
         return (0);
     }
     return (0);
-}
+} */

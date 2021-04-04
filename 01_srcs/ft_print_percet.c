@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_cdiu.c                                    :+:      :+:    :+:   */
+/*   ft_print_percet.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/24 11:54:44 by user              #+#    #+#             */
-/*   Updated: 2021/04/01 08:52:29 by user             ###   ########.fr       */
+/*   Created: 2021/04/04 18:18:24 by user              #+#    #+#             */
+/*   Updated: 2021/04/04 22:17:09 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void print_c(char *input, int has_format, va_list args2)
+void print_percent(char *input, int index, int has_format, va_list args2)
 {
-    int print;
-    if (has_format == -1)
-    {
-        print = va_arg(args2, int);
-        ft_putc(print);
-    }
-    else 
-        return ;
-}
+    static int count;
 
-void conv_itoa(char *input, int has_format, va_list args2)
-{
-    signed int x;
-    if (has_format == -1)
-    {
-        x = va_arg(args2, signed int);
-        ft_putnbr(x);
-    }
-    else 
-        return ;
+    count += 1;
+ 
+    if (input[index] == '%' && count % 2 == 0)
+        ft_putc('%');
+    return;
 }
-

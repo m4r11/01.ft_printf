@@ -3,20 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_field_x.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 16:39:49 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/02 19:12:04 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/03 18:02:37 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int		ft_is_hex(char *str)
+{
+	int i;
+    int c;
+	i = 0;
+    c = 0;
+	while (str[i] != '\0')
+	{
+		if (((str[i] >= 'A' && str[i] <= 'F' ) || (str[i] >= '0' && str[i] <= '9')))
+            c++;
+        i++;
+	}
+	return (c);
+}
+
 
 int ft_xlen(long print)
 {
     long decimal;
     long quotient;
     long remainder;
+    int len;
     char hexadecimal[20];
     if (print == 0)
         return (3);
@@ -33,7 +50,9 @@ int ft_xlen(long print)
             hexadecimal[j++] = 55 + remainder;
         quotient = quotient / 16;
     }
-    return (ft_strlen(hexadecimal));
+    len = ft_is_hex(hexadecimal);
+    //debug_number(len, " numhex");
+    return (len);
 }
 
 char ft_micro_great_width_less_print_x(int width, int min_c, long print, int len)

@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 21:26:13 by user              #+#    #+#             */
-/*   Updated: 2021/03/28 16:24:31 by user             ###   ########.fr       */
+/*   Updated: 2021/04/04 22:07:50 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,12 @@ void ft_put_address(char *input, long *print)
     return;
 }
 
-int ft_hexlen(long *print)
+int ft_hexlen(long print)
 {
     long decimal;
     long quotient;
     long remainder;
     char hexadecimal[20];
-    //debug_number(print, "print");
     if (print == 0)
         return(3);
     int j = 0;
@@ -89,5 +88,45 @@ int ft_hexlen(long *print)
             hexadecimal[j++] = 55 + remainder;
         quotient = quotient / 16;
     }
+    //debug_number((ft_is_hex(hexadecimal)), "n hex");
     return (j);
+}
+
+int ft_xlen(long print)
+{
+    long decimal;
+    long quotient;
+    long remainder;
+    char hexadecimal[20];
+    if (print == 0)
+        return (3);
+    int j = 0;
+    quotient = print;
+    while (quotient != 0)
+    {
+        if (quotient < 0)
+            quotient = UINT_MAX - ((print * -1) - 1);
+        remainder = quotient % 16;
+        if (remainder < 10)
+            hexadecimal[j++] = 48 + remainder;
+        else
+            hexadecimal[j++] = 55 + remainder;
+        quotient = quotient / 16;
+    }
+    return (ft_strlen(hexadecimal));
+}
+
+int		ft_is_hex(char *str)
+{
+	int i;
+    int c;
+	i = 0;
+    c = 0;
+	while (str[i] != '\0')
+	{
+		if (((str[i] >= 'A' && str[i] <= 'F' ) || (str[i] >= '0' && str[i] <= '9')))
+            c++;
+        i++;
+	}
+	return (c);
 }

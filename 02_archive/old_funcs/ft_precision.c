@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_precision.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 17:01:19 by user              #+#    #+#             */
-/*   Updated: 2021/04/01 16:59:57 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/03 20:30:43 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ char precision_int(char *dir, va_list args2)
     real = (ft_intstrchr(dir, '.', start));
     if(dir[real + 1] == 'u' || dir[real + 2] == 'u' )
         return(field_u_combos(dir, args2));
-    width = find_width(dir, start);
+    width = find_width(dir, start, args2);
     min_c = ft_atoi(&dir[real + 1]);
     position += 1;
     print = va_arg(args2, int);
