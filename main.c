@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:40:48 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/06 12:32:05 by user             ###   ########.fr       */
+/*   Updated: 2021/04/06 18:59:17 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,8 +246,8 @@ printf(" %p %p \n", 1, -1); ft_printf(" %p %p \n", 1, -1); */
 /* 	ft_printf("%10.10d\n", UINT_MAX);
 	printf("%10.10d\n", UINT_MAX); */
 	static char *s_hidden = "hi low\0don't print me lol\0";
-	ft_printf("%.09s\n", NULL);
-	printf("%.09s\n", NULL);
+	ft_printf("%.*s\n", -1, 0);
+	printf("%.*s\n", -1, 0);
 /* 	ft_printf(" 0*%-0*.10x*0 0*%-0*.0x*0 \n", 21, 1021, 21, -1011);
 	printf(" 0*%-0*.10x*0 0*%-0*.0x*0 \n", 21, 1021, 21, -1011); */
 /* 	ft_printf(" %x \n", 0);
