@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 11:54:44 by user              #+#    #+#             */
-/*   Updated: 2021/04/06 19:24:42 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/06 19:51:40 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** @48 treats padding on the left if width is >= 0
 ** @72 treats padding on the right if width is < 0
 ** @90 takes control after print_str, to pipe down correct formating option
-** @112 core drive for 's' flag. this i sthe first function to receive operative
+** @112 core drive for 'c' flag. this i sthe first function to receive operative
 ** control after parse function in printf.c call the get_converter[func array]
 */
 
@@ -67,7 +67,6 @@ int pad_left_c(int print, int to_pad, int min_c, int zero)
     }
     if (min_c == 0 && print == 0)
     {
-        /* this will ruin other stuff */
         ft_putc(print);
         print_x_times((to_pad * -1) - 1, ' ');
         return (0);
