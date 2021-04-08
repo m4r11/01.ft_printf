@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 08:18:21 by user              #+#    #+#             */
-/*   Updated: 2021/04/08 20:03:09 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/08 20:12:54 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,12 +116,10 @@ int	format_string(char *print, int to_pad, int min_c, int zero)
 
 int	print_str(char *input, int index, int has_format, va_list args2)
 {
-	char	*print;
-	int		width;
-	int		min_c;
-	int		zero;
-	
-	zero = ft_intstrchr(input, '0', index);
+	t_dir_variables	var;
+
+	char	*print;	
+	var.has_zero = ft_intstrchr(input, '0', index);
 	if (has_format == -1)
 	{
 		if (!(print = va_arg(args2, char *)))
@@ -131,10 +129,10 @@ int	print_str(char *input, int index, int has_format, va_list args2)
 	}
 	else
 	{
-		width = find_width_c(input, index, args2);
-		min_c = find_precision(input, ft_intstrchr(input, '.', index), args2);
+		var.to_pad = find_width_c(input, index, args2);
+		var.min_c = find_precision(input, ft_intstrchr(input, '.', index), args2);
 		print = va_arg(args2, char *);
-		format_string(print, width, min_c, zero);
+		format_string(print, var.to_pad, var.min_c, var.has_zero);
 		return (ft_intstrchr_flag(input, 's', index));
 	}
 	return (FAIL);

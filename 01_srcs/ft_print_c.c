@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 11:54:44 by user              #+#    #+#             */
-/*   Updated: 2021/04/08 20:07:46 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/08 20:13:07 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,3 +97,8 @@ int	print_c(char *input, int index, int has_format, va_list args2)
 	}
 	return (FAIL);
 }
+
+/* handy & usefull copy paste costume debug:
+debug_number(width, "w");
+debug_number(min_c, "m");
+ */

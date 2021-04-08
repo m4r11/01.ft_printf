@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 22:49:12 by user              #+#    #+#             */
-/*   Updated: 2021/04/08 20:08:33 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/08 20:13:17 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,7 @@ void ft_putnbr_up(int print, int min_c)
     return;
 }
 
-/*         debug_number(width, "w");
-        debug_number(min_c, "m");
-        debug_number(zero, "z"); */
+/* handy & usefull copy paste costume debug:
+debug_number(width, "w");
+debug_number(min_c, "m");
+ */
