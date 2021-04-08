@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_u.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 08:38:53 by user              #+#    #+#             */
-/*   Updated: 2021/04/08 17:53:12 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/09 00:17:23 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int type_print(unsigned int print, int to_pad, int min_c,int zero)
+int format_u(unsigned int print, int to_pad, int min_c, int zero)
 {
     if (to_pad > 0)
     {
@@ -21,77 +21,30 @@ static int type_print(unsigned int print, int to_pad, int min_c,int zero)
         if (min_c == 0 && zero == 1)
         {
             if (print == 0)
-            {
-                print_x_times(to_pad, ' ');
-                 return(0);
-            }
-            print_x_times(to_pad - ft_u_intlen(print), ' ');
-            ft_putnbr_u_up(print, min_c);
-            return (0);
+                return (print_x_times(to_pad, ' '));
+            else
+                return (ft_pad_left_len_u(print, to_pad - ft_u_intlen(print), min_c, ' '));
         }
         if (min_c == 0 && zero == -3)
         {
             if (print == 0)
-            {
-                print_x_times(to_pad, ' ');
-                return (0);
-            }
-            print_x_times(to_pad - ft_u_intlen(print), ' ');
-            ft_putnbr_u_up(print, min_c);
-            return (0);
+                return (print_x_times(to_pad, ' '));
+            else
+                return (ft_pad_left_len_u(print, to_pad - ft_u_intlen(print), min_c, ' '));
         }
-        if(min_c == -1 && zero == 1)
-        {
-            print_x_times((to_pad ) - ft_u_intlen(print), '0');
-            ft_putnbr_u_up(print, min_c);
-            return(0);
-        }
+        if (min_c == -1 && zero == 1)
+            return (ft_pad_left_len_u(print, to_pad - ft_u_intlen(print), min_c, '0'));
         if (to_pad > min_c)
         {
-            if(min_c < ft_u_intlen(print))
-                print_x_times(to_pad - ft_u_intlen(print), ' ');
-            else 
-                print_x_times(to_pad - min_c, ' ');
-            ft_putnbr_u_up(print, min_c);
-            return (0);
+            if (min_c < ft_u_intlen(print))
+                return (ft_pad_left_len_u(print, to_pad - ft_u_intlen(print), min_c, ' '));
+            else
+                return (ft_pad_left_len_u(print, to_pad - min_c, min_c, ' '));
         }
-        print_x_times(min_c - to_pad, ' ');
-        ft_putnbr_u_up(print, min_c);
-        return (0);
+        return (ft_pad_left_len_u(print, to_pad - min_c, min_c, ' '));
     }
     if (to_pad < 0)
-    {
-        if (min_c == 0 && print != 0)
-        {
-            ft_putnbr_u_up(print, min_c);
-            print_x_times((to_pad * -1) - ft_u_intlen(print), ' ');
-            return (0);
-        }
-        if (min_c == 0 && print == 0)
-        {
-            print_x_times((to_pad * -1), ' ');
-            return (0);
-        }
-        if (min_c > 0 && print == 0)
-        {
-            to_pad *= -1;
-            ft_putnbr_u_up(print, min_c);
-            if (min_c < ft_u_intlen(print))
-                print_x_times(to_pad - ft_u_intlen(print), ' ');
-            else
-                print_x_times(to_pad - min_c, ' ');
-            return (0);
-        }
-        if (min_c < ft_u_intlen(print))
-        {
-            ft_putnbr_u_up(print, min_c);
-            print_x_times((to_pad * -1) - ft_u_intlen(print), ' ');
-            return (0);
-        }
-        ft_putnbr_u_up(print, min_c);
-        print_x_times((to_pad * -1) - min_c, ' ');
-        return (0);
-    }
+        return (ft_pad_right_u(print, to_pad, min_c));
     if (to_pad == 0 && min_c <= 0 && print != 0)
         ft_putnbr_u_up(print, min_c);
     if (to_pad == 0 && min_c < 0 && print == 0)
@@ -103,7 +56,6 @@ static int type_print(unsigned int print, int to_pad, int min_c,int zero)
 
 int conv_uitoa(char *input, int index, int has_format, va_list args2)
 {
-    /* unsigned int x; */
     unsigned int a;
     int width;
     int min_c;
@@ -112,26 +64,25 @@ int conv_uitoa(char *input, int index, int has_format, va_list args2)
     {
         a = va_arg(args2, unsigned int);
         ft_putnbr_u(a);
-        return(ft_intstrchr_flag(input, 'u', index));
+        return (ft_intstrchr_flag(input, 'u', index));
     }
     else
     {
         width = find_width(input, index, args2);
         min_c = find_precision(input, ft_intstrchr(input, '.', index), args2);
-        //debug_number(width, "w");
-        //debug_number(min_c, "m");
         zero = ft_zerochr(input, index);
         a = va_arg(args2, unsigned int);
-        type_print(a, width, min_c, zero);
-        return(ft_intstrchr_flag(input, 'u', index));
+        format_u(a, width, min_c, zero);
+        return (ft_intstrchr_flag(input, 'u', index));
     }
-    return(FAIL);
+    return (FAIL);
 }
 
 void ft_putnbr_u_up(unsigned nb, int min_c)
 {
-    int len;
     char *uintmax;
+    int len;
+    
     if (nb < 0)
         nb = UINT_MAX;
     if (nb <= UINT_MAX)
@@ -146,12 +97,7 @@ void ft_putnbr_u_up(unsigned nb, int min_c)
         }
         len = ft_u_intlen(nb);
         if (min_c > 0)
-        {
-            if (ft_u_intlen(nb) == 1)
-                print_x_times(min_c - 1, '0');
-            else
                 print_x_times(min_c - len, '0');
-        }
         if (nb > 9)
         {
             ft_putnbr_u(nb / 10);

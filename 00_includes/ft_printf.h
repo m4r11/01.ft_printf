@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/08 20:00:11 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/09 00:11:13 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ typedef struct s_dir_variables
 	int has_zero;
 	int dot;
 	int q;
+	long l;
 	int min_c;
 	int start;
 	int to_pad;
@@ -193,6 +194,9 @@ int pad_right_s(char *print, int to_pad, int min_c, int zero);
 
 /* p */
 
+int ft_pad_right_nominc_p(int print, int to_pad, int min_c);
+int ft_pad_left_big_pad_p(int print, int to_pad, int min_c);
+int ft_pad_left_no_zero_p(int print, int to_pad, int min_c);
 int find_width_p(char *dir, int start, va_list args2);
 int format_address(long print, int to_pad, int min_c, int zero);
 int pad_left_p(long print, int to_pad, int min_c, int zero);
@@ -200,9 +204,14 @@ int pad_right_p(long print, int to_pad, int min_c);
 void ft_put_address_up(long print, int min_c);
 void ft_put_address(long print);
 int ft_hexlen(long print);
+int ft_edge_cases_p(long print, int min_c);
+void ft_min_c(long print, int min_c, int len);
 
 /* u */
 
+int format_u(unsigned int print, int to_pad, int min_c,int zero);
+int ft_pad_left_len_u(int print, int to_pad, int min_c, int c);
+int ft_pad_right_u(int print, int to_pad, int min_c);
 void ft_putnbr_u_up(unsigned nb, int min_c);
 
 /* x */

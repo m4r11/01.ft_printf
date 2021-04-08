@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:40:48 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/08 17:27:59 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/08 23:46:07 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,8 +240,13 @@ printf(" %p %p \n", 1, -1); ft_printf(" %p %p \n", 1, -1); */
 	static char *s_hidden = "hi low\0don't print me lol\0";
 	static char *test; */
 	//ft_printf("%-70p\n", &a01);
-	r1 = ft_printf("%% *.5i 42 == |% *.5i|\n", 4, 42);
-	r2 = printf("%% *.5i 42 == |% *.5i|\n", 4, 42);
+/* 	static char *a01;
+	char *test; */
+	static char *test;
+	r1 = ft_printf("%p\n", &test);
+	r2 = printf("%p\n", &test);
+/* 	r1 = ft_printf("%7p\n", &test);
+	r2 = printf("%7p\n", &test); */
 /*
 ft_printf("%.*p\n", -3, &test);
 	printf("%.*p\n", -3, &test); */

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_s.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 08:18:21 by user              #+#    #+#             */
-/*   Updated: 2021/04/08 20:12:54 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/08 21:41:04 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,8 @@ int	format_string(char *print, int to_pad, int min_c, int zero)
 int	print_str(char *input, int index, int has_format, va_list args2)
 {
 	t_dir_variables	var;
-
 	char	*print;	
+	
 	var.has_zero = ft_intstrchr(input, '0', index);
 	if (has_format == -1)
 	{
