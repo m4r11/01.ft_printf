@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_search_flag_n_format.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 17:53:40 by user              #+#    #+#             */
-/*   Updated: 2021/04/06 09:21:15 by user             ###   ########.fr       */
+/*   Updated: 2021/04/08 17:54:01 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,10 @@ int    loop_through(char *flags, char *format, int j)
 return(-3);
 }
 
-int    loop_for_directives(char *flags, char *format, int j)
+int    loop_for_directives(char *format, int j)
 {
     char *start = (ft_strchr(&format[j], '%') + 1);
     //debug_str(start, "start");
-    int argnum;
     
     if(start[0] == '*')
         return(STAR);

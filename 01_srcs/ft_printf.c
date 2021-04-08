@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 22:11:39 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/07 23:44:29 by user             ###   ########.fr       */
+/*   Updated: 2021/04/08 17:55:40 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int print_string(char *s, int c, int start)
 int ft_printf(const char *format, ...)
 {
 	t_struct v;
-	t_type type;
 	va_start(args, format);
 	va_copy(args2, args);
 	int i;
@@ -64,14 +63,14 @@ int ft_printf(const char *format, ...)
 
 int parse(char *to_parse, int i)
 {
-	t_dir_variables dv;
+	/* t_dir_variables dv; */
 	int find_dir;
 	int find_flag;
 	if (i == END)
 		return (END);
 	find_flag = loop_through(CONV_S, to_parse, i);
 	//debug_number(find_flag, "f");
-	find_dir = loop_for_directives(DIR_S, to_parse, i);
+	find_dir = loop_for_directives(to_parse, i);
 	//debug_number(find_dir, "dir");
 	//debug_number(i, "i");
 	i = get_converter[find_flag](to_parse, i, find_dir, args2)  + 1;

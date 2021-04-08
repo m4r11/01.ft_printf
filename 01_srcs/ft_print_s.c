@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_s.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 08:18:21 by user              #+#    #+#             */
-/*   Updated: 2021/04/08 15:01:31 by user             ###   ########.fr       */
+/*   Updated: 2021/04/08 20:03:09 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 #include "ft_printf.h"
 
-int	null_string(char *print, int to_pad, int min_c, int zero)
+int	null_string(char *print, int to_pad, int min_c)
 {
 	print = "(null)";
 	if (to_pad == 0 && min_c > 0 && min_c <= ft_strlen(print))
@@ -48,7 +48,7 @@ int	null_string(char *print, int to_pad, int min_c, int zero)
 	return (0);
 }
 
-int	pad_left_s(char *print, int to_pad, int min_c, int zero)
+int	pad_left_s(char *print, int to_pad, int min_c)
 {
 	if (min_c == 0)
 		return (print_x_times(to_pad, ' '));
@@ -92,9 +92,9 @@ int	pad_right_s(char *print, int to_pad, int min_c, int zero)
 int	format_string(char *print, int to_pad, int min_c, int zero)
 {
 	if (print == NULL)
-		return (null_string(print, to_pad, min_c, zero));
+		return (null_string(print, to_pad, min_c));
 	if (to_pad > 0)
-		return (pad_left_s(print, to_pad, min_c, zero));
+		return (pad_left_s(print, to_pad, min_c));
 	if (to_pad < 0)
 		return (pad_right_s(print, to_pad, min_c, zero));
 	if (to_pad == 0 && min_c == 0)

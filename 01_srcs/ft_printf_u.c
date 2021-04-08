@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_u.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 08:38:53 by user              #+#    #+#             */
-/*   Updated: 2021/04/08 10:32:03 by user             ###   ########.fr       */
+/*   Updated: 2021/04/08 17:53:12 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int type_print(unsigned int print, int to_pad, int min_c, int size, int zero)
+static int type_print(unsigned int print, int to_pad, int min_c,int zero)
 {
     if (to_pad > 0)
     {
@@ -122,7 +122,7 @@ int conv_uitoa(char *input, int index, int has_format, va_list args2)
         //debug_number(min_c, "m");
         zero = ft_zerochr(input, index);
         a = va_arg(args2, unsigned int);
-        type_print(a, width, min_c, ft_u_intlen(a), zero);
+        type_print(a, width, min_c, zero);
         return(ft_intstrchr_flag(input, 'u', index));
     }
     return(FAIL);

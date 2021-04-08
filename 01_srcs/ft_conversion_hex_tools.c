@@ -6,13 +6,13 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 21:26:13 by user              #+#    #+#             */
-/*   Updated: 2021/04/08 17:31:17 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/08 17:46:29 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void ft_put_address(long *print)
+void ft_put_address(long print)
 {
    /*  long decimal; */
     long quotient;
@@ -24,21 +24,21 @@ void ft_put_address(long *print)
     if (!(hexadecimal = malloc(sizeof(char *))))
         return;
     int j = 0;
-    if (print == (long*)LONG_MIN)
+    if (print == (long)LONG_MIN)
     {
         longmin = "0x8000000000000000";
         ft_putstr(longmin);
         free(hexadecimal);
         return ;
     }
-    if (print == (long*)ULONG_MAX)
+    if (print == (long)ULONG_MAX)
     {
         ulongmax = "0xffffffffffffffff";
         ft_putstr(ulongmax);
         free(hexadecimal);
         return ;
     }
-    quotient = *(long *)&print;
+    quotient = print;
     ft_putc('0');
     ft_putc('x');
     if (quotient == 0)

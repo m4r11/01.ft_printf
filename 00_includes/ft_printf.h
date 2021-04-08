@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/08 17:30:28 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/08 20:00:11 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,23 +158,37 @@ int print_string(char *s, int c, int start);
 int ft_is_hex(char *str);
 int find_precision(char *dir, int start, va_list args2);
 
+/* c */
+
+int    ft_pad_left_printc_after_zero(int print, int to_pad);
+int    ft_pad_left_printc_after(int print, int to_pad);
+int    ft_printc_pad_right(int print, int to_pad);
+
+
 /* s */
 
 int find_width_c(char *dir, int start, va_list args2);
-int pad_right_c(int print, int to_pad, int min_c, int zero);
+int pad_right_c(int print, int to_pad, int min_c);
 int pad_left_c(int print, int to_pad, int min_c, int zero);
 int format_c(int print, int to_pad, int min_c, int zero);
 
 /* di */
-
+int    ft_pad_right(int print, int to_pad, int min_c);
+int    ft_pad_left_no_min_no_zero(int print, int to_pad, int min_c);
+int    ft_pad_left_no_min_zero(int print, int to_pad, int min_c);
+int    ft_pad_left_minor_min(int print, int to_pad, int min_c);
+int    ft_pad_left_bigger_pad(int print, int to_pad, int min_c);
+int    ft_pad_left_putnbr_min(int print, int to_pad, int min_c);
+int    ft_pad_left_putnbr_zero(int print, int to_pad, int min_c);
+int    ft_pad_left_putnbr(int print, int to_pad, int min_c);
 int pad_left_ints(int print, int to_pad, int min_c, int zero);
 int pad_right_ints(int print, int to_pad, int min_c, int zero);
 void ft_putnbr_up(int print, int min_c);
 
 /* s */
 int format_string(char *print, int to_pad, int min_c, int zero);
-int null_string(char *print, int to_pad, int min_c, int zero);
-int pad_left_s(char *print, int to_pad, int min_c, int zero);
+int null_string(char *print, int to_pad, int min_c);
+int pad_left_s(char *print, int to_pad, int min_c);
 int pad_right_s(char *print, int to_pad, int min_c, int zero);
 
 /* p */
@@ -182,9 +196,9 @@ int pad_right_s(char *print, int to_pad, int min_c, int zero);
 int find_width_p(char *dir, int start, va_list args2);
 int format_address(long print, int to_pad, int min_c, int zero);
 int pad_left_p(long print, int to_pad, int min_c, int zero);
-int pad_right_p(long print, int to_pad, int min_c, int zero);
-void ft_put_address_up(long print, int min_c, int flag);
-void ft_put_address(long *print);
+int pad_right_p(long print, int to_pad, int min_c);
+void ft_put_address_up(long print, int min_c);
+void ft_put_address(long print);
 int ft_hexlen(long print);
 
 /* u */
@@ -412,7 +426,7 @@ void ft_put_x(long print, int flag);
 /*
 ** parse_directives.c
 */
-int loop_for_directives(char *flags, char *format, int j);
+int loop_for_directives( char *format, int j);
 
 /*
 ** ft_printf.c

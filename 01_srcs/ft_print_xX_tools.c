@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_xX_tools.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 10:45:41 by user              #+#    #+#             */
-/*   Updated: 2021/04/08 12:17:01 by user             ###   ########.fr       */
+/*   Updated: 2021/04/08 17:51:50 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void ft_put_x(long print, int flag)
     char hexadecimal[100];
     char *longmin;
     int j = 0;
-    if (print == LONG_MIN || print == ULONG_MAX)
+    if (print == (long)LONG_MIN || print == (long)ULONG_MAX)
     {
         if (flag == 3)
             longmin = "FFFFFFFF";
@@ -62,7 +62,7 @@ void ft_put_x_up(long print, int min_c, int flag)
     char *ulongmax;
     int len;
     int j = 0;
-    if (print == ULONG_MAX || print == LONG_MIN)
+    if (print == (long)ULONG_MAX || print == (long)LONG_MIN)
     {
         if (flag == 3)
             ulongmax = "FFFFFFFF";

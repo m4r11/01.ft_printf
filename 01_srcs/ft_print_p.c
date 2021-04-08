@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 12:00:12 by user              #+#    #+#             */
-/*   Updated: 2021/04/08 17:30:52 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/08 17:49:39 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ int pad_left_p(long print, int to_pad, int min_c, int zero)
         {
             if (print == 0)
             {
-                ft_put_address_up(print, min_c, to_pad);
+                ft_put_address_up(print, min_c);
                 print_x_times(to_pad - 3, ' ');
                 return (0);
             }
             print_x_times(to_pad - ft_u_intlen(print), ' ');
-            ft_put_address_up(print, min_c, to_pad);
+            ft_put_address_up(print, min_c);
             return (0);
         }
     if (to_pad > min_c)
@@ -34,29 +34,29 @@ int pad_left_p(long print, int to_pad, int min_c, int zero)
         if (print == 0)
         {
             print_x_times(to_pad - 3, ' ');
-            ft_put_address_up(print, min_c, to_pad);
+            ft_put_address_up(print, min_c);
             return (0);
         }
         if (print > 0)
         {
             print_x_times(to_pad - ft_hexlen(print), ' ');
-            ft_put_address_up(print, min_c, to_pad);
+            ft_put_address_up(print, min_c);
             return (0);
         }
-        ft_put_address_up(print, min_c, to_pad);
+        ft_put_address_up(print, min_c);
         print_x_times(to_pad - ft_u_intlen(print), ' ');
         return (0);
     }
     print_x_times(min_c - to_pad, ' ');
-    ft_put_address_up(print, min_c, to_pad);
+    ft_put_address_up(print, min_c);
     return (0);
 }
 
-int pad_right_p(long print, int to_pad, int min_c, int zero)
+int pad_right_p(long print, int to_pad, int min_c)
 {
     if (min_c == 0 && print != 0)
     {
-        ft_put_address_up(print, min_c, to_pad);
+        ft_put_address_up(print, min_c);
         print_x_times((to_pad * -1) - ft_hexlen(print), ' ');
         return (0);
     }
@@ -72,7 +72,7 @@ int pad_right_p(long print, int to_pad, int min_c, int zero)
     }
     if (min_c != -1 && min_c < ft_xlen(print))
     {
-        ft_put_address_up(print, min_c, to_pad);
+        ft_put_address_up(print, min_c);
         print_x_times((to_pad * -1) - ft_xlen(print), ' ');
         return (0);
     }
@@ -81,22 +81,22 @@ int pad_right_p(long print, int to_pad, int min_c, int zero)
         /* escrevei aqu */
         if (print == 0 || print == 1)
         {
-            ft_put_address_up(print, min_c, to_pad);
+            ft_put_address_up(print, min_c);
             print_x_times((to_pad * -1) - 3, ' ');
             return (0);
         }
         if (print < 0)
         {
-            ft_put_address_up(print, min_c, to_pad);
+            ft_put_address_up(print, min_c);
             print_x_times((to_pad * -1) - ft_u_intlen(print) - 1, ' ');
             return (0);
         }
         /* tasqui */
-        ft_put_address_up(print, min_c, to_pad);
+        ft_put_address_up(print, min_c);
         print_x_times((to_pad * -1) - ft_hexlen(print), ' ');
         return (0);
     }
-    ft_put_address_up(print, min_c, to_pad);
+    ft_put_address_up(print, min_c);
     print_x_times((to_pad * -1) - min_c, ' ');
     return (0);
 }
@@ -106,11 +106,11 @@ int format_address(long print, int to_pad, int min_c, int zero)
     if (to_pad > 0)
         return (pad_left_p(print, to_pad, min_c, zero));
     if (to_pad < 0)
-        return (pad_right_p(print, to_pad, min_c, zero));
+        return (pad_right_p(print, to_pad, min_c));
     if (to_pad == 0 && min_c > 0)
-        ft_put_address_up(print, min_c, to_pad);
+        ft_put_address_up(print, min_c);
     if (to_pad == 0 && min_c < 0)
-        ft_put_address_up(print, min_c, to_pad);
+        ft_put_address_up(print, min_c);
     else
         return (0);
     return (0);
@@ -140,14 +140,12 @@ int print_ptr(char *input, int index, int has_format, va_list args2)
     return(FAIL);
 }
 
-void ft_put_address_up(long print, int min_c, int flag)
+void ft_put_address_up(long print, int min_c)
 {
-    long decimal;
     long quotient;
     long remainder;
     char hexadecimal[100];
     char *longmin;
-    char *ulongmax;
     int len;
     int j = 0;
 
