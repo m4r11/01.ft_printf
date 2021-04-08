@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lib_tools.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 17:20:24 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/08 12:40:21 by user             ###   ########.fr       */
+/*   Updated: 2021/04/08 17:32:02 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void ft_putc(char c)
 
 void ft_putstr(char *str)
 {
-	t_struct v;
 	int i;
 
 	i = 0;

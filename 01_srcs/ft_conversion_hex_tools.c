@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_conversion_hex_tools.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 21:26:13 by user              #+#    #+#             */
-/*   Updated: 2021/04/08 13:41:28 by user             ###   ########.fr       */
+/*   Updated: 2021/04/08 17:31:17 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void ft_put_address(char *input, long *print)
+void ft_put_address(long *print)
 {
-    long decimal;
+   /*  long decimal; */
     long quotient;
     long remainder;
     char *hexadecimal;
@@ -60,7 +60,6 @@ void ft_put_address(char *input, long *print)
 
 int ft_hexlen(long print)
 {
-    long decimal;
     long quotient;
     long remainder;
     char hexadecimal[20];
@@ -94,7 +93,6 @@ int ft_hexlen(long print)
 
 int ft_xlen(long print)
 {
-    long decimal;
     long quotient;
     long remainder;
     char hexadecimal[20];

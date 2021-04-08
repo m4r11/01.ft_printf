@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:40:48 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/08 15:16:54 by user             ###   ########.fr       */
+/*   Updated: 2021/04/08 17:27:59 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -225,7 +225,6 @@ printf(" %p %p \n", 1, -1); ft_printf(" %p %p \n", 1, -1); */
 	ft_printf("***         case x        ****\n");
 	ft_printf("******************************\n");
 	ft_printf("\n"); */
-	/* static */  static char a01;
 	/* static unsigned char a02;
 	static short a03;
 	static unsigned short a04;
@@ -237,12 +236,12 @@ printf(" %p %p \n", 1, -1); ft_printf(" %p %p \n", 1, -1); */
 	static unsigned long long a10;
 	static char *a11;
 	static void *a12; */
-
+/* 
 	static char *s_hidden = "hi low\0don't print me lol\0";
-	static char *test;
+	static char *test; */
 	//ft_printf("%-70p\n", &a01);
-	r1 = ft_printf("%.*i\n", 6, -3);
-	r2 = printf("%.*i\n", 6, -3);
+	r1 = ft_printf("%% *.5i 42 == |% *.5i|\n", 4, 42);
+	r2 = printf("%% *.5i 42 == |% *.5i|\n", 4, 42);
 /*
 ft_printf("%.*p\n", -3, &test);
 	printf("%.*p\n", -3, &test); */

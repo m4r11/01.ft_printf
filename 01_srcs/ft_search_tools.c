@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_search_tools.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 11:43:24 by user              #+#    #+#             */
-/*   Updated: 2021/04/08 15:14:39 by user             ###   ########.fr       */
+/*   Updated: 2021/04/08 16:40:38 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int find_width_d(char *dir, int start, va_list args2)
     if (start == -1)
         return (0);
     width = 0;
-    while ((dir[start++] && dir[start] != '.' )|| dir[start] != '\0')
+    while ((dir[start++] && dir[start] != '.' ) && dir[start] != '\0')
     {
         if (dir[start] == '0')
             start += 1;

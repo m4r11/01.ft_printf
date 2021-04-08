@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 20:01:13 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/01 17:37:40 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/08 17:31:44 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void ft_putnbr_u(unsigned int nb)
     return;
 }
 
-void ft_putnbr_limit(int nb, int x)
+/* void ft_putnbr_limit(int nb, int x)
 {
     //debug_number(nb, "nb");
     if (nb <= INT_MAX && nb >= INT_MIN)
@@ -98,7 +98,7 @@ void ft_putnbr_limit(int nb, int x)
             ft_putc(nb + '0');
     }
     return;
-}
+} */
 
 char *ft_itoa(int n)
 {

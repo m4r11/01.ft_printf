@@ -6,7 +6,7 @@
 #    By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/27 16:16:23 by mvaldeta          #+#    #+#              #
-#    Updated: 2021/04/01 18:29:25 by mvaldeta         ###   ########.fr        #
+#    Updated: 2021/04/08 17:26:32 by mvaldeta         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ ARRC		= ar rcs
 
 RM			= rm -f
 
-#CFLAGS		= -Wall -Wextra -Werror 
+CFLAGS		= -Wall -Wextra -Werror 
 
 .c.o: 
 			${CC} -g ${CFLAGS} -c $^ -o ${<:.c=.o} -I${INCDIR}

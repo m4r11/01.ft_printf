@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/08 15:14:53 by user             ###   ########.fr       */
+/*   Updated: 2021/04/08 17:30:28 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,6 +184,8 @@ int format_address(long print, int to_pad, int min_c, int zero);
 int pad_left_p(long print, int to_pad, int min_c, int zero);
 int pad_right_p(long print, int to_pad, int min_c, int zero);
 void ft_put_address_up(long print, int min_c, int flag);
+void ft_put_address(long *print);
+int ft_hexlen(long print);
 
 /* u */
 
@@ -241,12 +243,6 @@ char put_field(char *dir, va_list args2, int flag);
 char has_formating(char *format, int n, va_list args2, int flag);
 int get_index(char *s1, char *s2);
 
-/*
-** position.c
-*/
-char position_address(char *dir, va_list args2);
-void ft_put_address(char *input, long *print);
-int ft_hexlen(long print);
 
 /*
 ** micro_field_tools.c

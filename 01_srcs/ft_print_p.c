@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_p.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 12:00:12 by user              #+#    #+#             */
-/*   Updated: 2021/04/07 23:38:29 by user             ###   ########.fr       */
+/*   Updated: 2021/04/08 17:30:52 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ int print_ptr(char *input, int index, int has_format, va_list args2)
     if (has_format == -1)
     {
         q = va_arg(args2, long);
-        ft_put_address(input, q);
+        ft_put_address(q);
         return(ft_intstrchr_flag(input, 'p', index));
     }
     else
