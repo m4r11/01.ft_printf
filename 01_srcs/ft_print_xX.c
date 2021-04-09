@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_xX.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 11:56:36 by user              #+#    #+#             */
-/*   Updated: 2021/04/08 18:55:01 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/09 10:16:01 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,34 +32,14 @@ int format_x(t_dir_variables var)
                 ft_put_x_up(var.q, var.min_c, var.flag);
                 return (0);
             }
-            if (var.min_c == -1 && var.q == 0)
-            {
-                print_x_times(var.to_pad - 1, '0');
-                ft_put_x_up(var.q, var.min_c, var.flag);
-                return (0);
-            }
             if (var.min_c > 0 && var.q == 0)
             {
+                
                 print_x_times(var.to_pad - var.min_c, ' ');
                 ft_put_x_up(var.q, var.min_c, var.flag);
                 return (0);
             }
             if (var.min_c > 0 && var.q != 0)
-            {
-                if (var.min_c < ft_xlen(var.q))
-                {
-                    print_x_times(var.to_pad - ft_xlen(var.q), ' ');
-                    ft_put_x_up(var.q, var.min_c, var.flag);
-                    return (0);
-                }
-                if (var.min_c > ft_xlen(var.q))
-                {
-                    print_x_times(var.to_pad - var.min_c, ' ');
-                    ft_put_x_up(var.q, var.min_c, var.flag);
-                    return (0);
-                }
-            }
-            if (var.min_c == 0 && var.q != 0)
             {
                 if (var.min_c < ft_xlen(var.q))
                 {
