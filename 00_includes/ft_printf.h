@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/09 00:11:13 by user             ###   ########.fr       */
+/*   Updated: 2021/04/13 21:37:15 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ typedef struct s_dir_variables
 	int x;
 	int has_zero;
 	int dot;
-	int q;
+	long q;
 	long l;
 	int min_c;
 	int start;
@@ -194,18 +194,18 @@ int pad_right_s(char *print, int to_pad, int min_c, int zero);
 
 /* p */
 
-int ft_pad_right_nominc_p(int print, int to_pad, int min_c);
-int ft_pad_left_big_pad_p(int print, int to_pad, int min_c);
-int ft_pad_left_no_zero_p(int print, int to_pad, int min_c);
+int ft_pad_right_nominc_p(unsigned long long print, int to_pad, int min_c);
+int ft_pad_left_big_pad_p(unsigned long long print, int to_pad, int min_c);
+int ft_pad_left_no_zero_p(unsigned long long print, int to_pad, int min_c);
 int find_width_p(char *dir, int start, va_list args2);
-int format_address(long print, int to_pad, int min_c, int zero);
-int pad_left_p(long print, int to_pad, int min_c, int zero);
-int pad_right_p(long print, int to_pad, int min_c);
-void ft_put_address_up(long print, int min_c);
-void ft_put_address(long print);
-int ft_hexlen(long print);
-int ft_edge_cases_p(long print, int min_c);
-void ft_min_c(long print, int min_c, int len);
+int format_address(unsigned long long print, int to_pad, int min_c, int zero);
+int pad_left_p(unsigned long long print, int to_pad, int min_c, int zero);
+int pad_right_p(unsigned long long print, int to_pad, int min_c);
+void ft_put_address_up(unsigned long long print, int min_c);
+void ft_put_address(unsigned long long print);
+int ft_hexlen(unsigned long long print);
+int ft_edge_cases_p(unsigned long long print, int min_c);
+void ft_min_c(unsigned long long print, int min_c, int len);
 
 /* u */
 
@@ -215,6 +215,21 @@ int ft_pad_right_u(int print, int to_pad, int min_c);
 void ft_putnbr_u_up(unsigned nb, int min_c);
 
 /* x */
+int padleft_minc_x(t_dir_variables var);
+int padright_nominc_q0(t_dir_variables var);
+int padright_minc_minor(t_dir_variables var);
+int padright_bigminc(t_dir_variables var);
+int padright_bigminc_q0(t_dir_variables var);
+int padright_minc0(t_dir_variables var);
+int padleft_zeroq(t_dir_variables var);
+int padleft_nominc_0(t_dir_variables var);
+int padleft_min0_no0(t_dir_variables var);
+int padleft_lesspad(t_dir_variables var);
+int padleft_bigpad(t_dir_variables var);
+int padleft_hasz_x(t_dir_variables var);
+int padleft_xlen_x(t_dir_variables var,int c);
+int padright_x(t_dir_variables var);
+int padleft_x(t_dir_variables var);
 int format_x(t_dir_variables var);
 void ft_put_x_up(long print, int min_c, int width);
 
@@ -396,8 +411,8 @@ void ft_putc(char c);
 void ft_putstr(char *str);
 char ft_putstr_limit(char *str, int limit);
 char *ft_strdup(const char *s1);
-int ft_intlen(int);
-int counter(int n);
+int ft_intlen(int n);
+int counter(int n, int reset);
 int ft_arglen(char *search);
 int ft_strlen(char *str);
 int ft_tolower(int c);

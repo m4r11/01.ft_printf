@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:40:48 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/08 23:46:07 by user             ###   ########.fr       */
+/*   Updated: 2021/04/13 21:32:16 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,9 +242,40 @@ printf(" %p %p \n", 1, -1); ft_printf(" %p %p \n", 1, -1); */
 	//ft_printf("%-70p\n", &a01);
 /* 	static char *a01;
 	char *test; */
-	static char *test;
-	r1 = ft_printf("%p\n", &test);
-	r2 = printf("%p\n", &test);
+	//static char *test;
+/* 	int		a = -4;
+	int		b = 0;
+	char	c = 'a';
+	int		d = 2147483647;
+	int		e = -2147483648;
+	int		f = 42;
+	int		g = 25;
+	int		h = 4200; */
+	int		i = 8;
+	int		j = -12;
+	int		k = 123456789;
+	int		l = 0;
+	int		m = -12345678;
+	char	c = 'a';
+	int		e = -2147483648;
+	int		d = 2147483647;
+	
+/* 	char	*n = "abcdefghijklmnop";
+	char	*o = "-a";
+	char	*p = "-12";
+	char	*q = "0";
+	char	*r = "%%";
+	char	*s = "-2147483648";
+	char	*t = "0x12345678";
+	char	*u = "-0"; */
+	
+/* 	int len = ft_intlen(-2147483648);
+	printf("len:%d\n", len); */
+	//static char *s_hidden = "hi low\0don't print me lol\0";
+//	static int ncm_p = 5;
+	r1 = ft_printf(" *%-*.*x* *%*.*x* ", 6, 2, 102, 10, 21, -101);
+	ft_printf("\n");
+	r2 = printf(" *%-*.*x* *%*.*x* ", 6, 2, 102, 10, 21, -101);
 /* 	r1 = ft_printf("%7p\n", &test);
 	r2 = printf("%7p\n", &test); */
 /*

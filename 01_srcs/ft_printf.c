@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 22:11:39 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/08 17:55:40 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/13 19:13:30 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,13 @@ int ft_printf(const char *format, ...)
 	int i;
 
 	i = 0;
+	counter(0, i);
 	v.temp = ft_strdup(format);
 	while (i != END)
 		i = parse(v.temp, print_string(v.temp, '%', i));	
 	va_end(args);
 	free(v.temp);
-	return (counter(0));
+	return (counter(0, 1));
 }
 
 int parse(char *to_parse, int i)
@@ -73,10 +74,12 @@ int parse(char *to_parse, int i)
 	find_dir = loop_for_directives(to_parse, i);
 	//debug_number(find_dir, "dir");
 	//debug_number(i, "i");
-	i = get_converter[find_flag](to_parse, i, find_dir, args2)  + 1;
+	i = get_converter[find_flag](to_parse, i, find_dir, args2) + 1;
 	//debug_number(i, "RESULT OF GET CONVERTED");
 	//debug_number(ft_strlen(to_parse), "len");
-	if (i == END_STRING || i == END)
+/* 	debug_number(i, "i");
+	debug_number(find_flag, "f"); */
+	if (i == END_STRING || i == END || i == ft_strlen(to_parse))
 		return (END);
 	else
 		return (i);

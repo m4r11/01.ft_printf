@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_conversion_hex_tools.c                          :+:      :+:    :+:   */
+/*   ft_tools_x_convert.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 21:26:13 by user              #+#    #+#             */
-/*   Updated: 2021/04/09 00:17:36 by user             ###   ########.fr       */
+/*   Updated: 2021/04/13 17:20:46 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void ft_put_address(long print)
+void ft_put_address(unsigned long long print)
 {
    /*  long decimal; */
     long quotient;
@@ -24,14 +24,14 @@ void ft_put_address(long print)
     if (!(hexadecimal = malloc(sizeof(char *))))
         return;
     int j = 0;
-    if (print == (long)LONG_MIN)
+    if (print == (unsigned long long)LONG_MIN)
     {
         longmin = "0x8000000000000000";
         ft_putstr(longmin);
         free(hexadecimal);
         return ;
     }
-    if (print == (long)ULONG_MAX)
+    if (print == (unsigned long long)ULONG_MAX)
     {
         ulongmax = "0xffffffffffffffff";
         ft_putstr(ulongmax);
@@ -58,7 +58,7 @@ void ft_put_address(long print)
     return;
 }
 
-int ft_hexlen(long print)
+int ft_hexlen(unsigned long long print)
 {
     long quotient;
     long remainder;

@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lib_tools.c                                     :+:      :+:    :+:   */
+/*   ft_tools_zlib.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 17:20:24 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/08 17:32:02 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/13 18:03:52 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
 void ft_putc(char c)
 {
 	write(1, &c, 1);
-	counter(1);
+	counter(1, 1);
 }
 
 void ft_putstr(char *str)
@@ -93,6 +88,7 @@ int ft_toupper(int c)
 
 int ft_intlen(int n)
 {
+	//printf("\ninside intlrn: %ld\n", n);
 	int len;
 	len = 1;
 	if (n < 0)
@@ -178,11 +174,13 @@ char *ft_strdup(const char *s1)
 	return (s2);
 }
 
-int counter(int n)
+int counter(int n,int reset)
 {
 	static int res;
-
-	res += n;
+	if (reset == 0)
+		res *= 0;
+	else 
+		res += n;
 	return(res);
 }
 
