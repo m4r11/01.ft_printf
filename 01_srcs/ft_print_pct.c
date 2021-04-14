@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_percet.c                                  :+:      :+:    :+:   */
+/*   ft_print_pct.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 18:18:24 by user              #+#    #+#             */
-/*   Updated: 2021/04/08 18:54:58 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/14 22:45:41 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int print_percent(char *input, int index, int has_format, va_list args2)
+int	print_percent(char *input, int index, int has_format, va_list args2)
 {
-    static int count;
-    t_dir_variables var;
+	int				c;
+	static int		count;
+	t_dir_variables	var;
 
-    if (has_format == -1)
-    {
-        if (input[index + 1] == '%' /* && count % 2 == 0 */)
-            ft_putc('%');
-        count += 1;
-        return (ft_intstrchr(input, '%', index));
-    }
-    else
-    {
-        var.to_pad = find_width_c(input, index, args2);
-        var.min_c = find_precision(input, ft_intstrchr(input, '.', index), args2);
-        var.has_zero = ft_zerochr(input, index);
-        int c = '%';
-        format_c(c, var.to_pad, var.min_c, var.has_zero);
-        return (ft_intstrchr(input, '%', index));
-    }
+	if (has_format == -1)
+	{
+		if (input[index + 1] == '%')
+			ft_putc('%');
+		count += 1;
+		return (ft_intstrchr(input, '%', index));
+	}
+	else
+	{
+		var.to_pad = find_width_c(input, index, args2);
+		var.m = find_precision(input, ft_intstrchr(input, '.', index), args2);
+		var.has_zero = ft_zerochr(input, index);
+		c = '%';
+		format_c(c, var.to_pad, var.m, var.has_zero);
+		return (ft_intstrchr(input, '%', index));
+	}
 }

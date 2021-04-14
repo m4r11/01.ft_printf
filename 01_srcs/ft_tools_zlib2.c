@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 14:24:40 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/09 14:31:52 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/14 15:48:14 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,14 @@ char *ft_strdup(const char *s1)
 	return (s2);
 }
 
-int counter(int n)
+int counter(int n, int reset)
 {
 	static int res;
 
-	res += n;
+	if(reset == 0)
+		res *= 0;
+	else
+		res += n;
 	return(res);
 }
 

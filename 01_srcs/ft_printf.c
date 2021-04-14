@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 22:11:39 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/09 14:45:44 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/14 11:33:19 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,13 @@ int	ft_printf(const char *format, ...)
 	va_start(args, format);
 	va_copy(args2, args);
 	i = 0;
+	counter(0, 0);
 	v.temp = ft_strdup(format);
 	while (i != END)
 		i = parse(v.temp, print_string(v.temp, '%', i));
 	va_end(args);
 	free(v.temp);
-	return (counter(0));
+	return (counter(0, 1));
 }
 
 int	parse(char *to_parse, int i)

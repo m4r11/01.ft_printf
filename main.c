@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:40:48 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/09 18:46:51 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/14 20:53:51 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,7 +221,7 @@ printf(" %p %p \n", 1, -1); ft_printf(" %p %p \n", 1, -1); */
 	printf("%9.10u\n", UINT_MAX); */
 	/* 	ft_printf(" --0*%-0*.2u*0 0*%-0*.2u*0-- \n", -21, UINT_MAX, 21, UINT_MAX + 1);
 	printf(" --0*%-0*.2u*0 0*%-0*.2u*0-- \n", -21, UINT_MAX, 21, UINT_MAX + 1); */
-/* 	ft_printf("******************************\n");
+	/* 	ft_printf("******************************\n");
 	ft_printf("***         case x        ****\n");
 	ft_printf("******************************\n");
 	ft_printf("\n"); */
@@ -236,22 +236,45 @@ printf(" %p %p \n", 1, -1); ft_printf(" %p %p \n", 1, -1); */
 	static unsigned long long a10;
 	static char *a11;
 	static void *a12; */
-/* 
+	/* 
 	static char *s_hidden = "hi low\0don't print me lol\0";
 	static char *test; */
 	//ft_printf("%-70p\n", &a01);
-/* 	static char *a01;
+	/* 	static char *a01;
 	char *test; */
 	//static char *test;
-/* 	r1 = ft_printf("%7p\n", &test);
+	/* 	r1 = ft_printf("%7p\n", &test);
 	r2 = printf("%7p\n", &test); */
-	r1 = ft_printf("%03x\n", 0);
-	r2 = printf("%03x\n", 0);
-/* 	r1 = ft_printf("%70p\n", &test);
+	int		a = 3;
+	int		b = 5;
+	char	c = 'a';
+	int		d = 2147483647;
+	int		e = -2147483648;
+	int		f = 42;
+	int		g = 25;
+	int		h = 4200;
+	int		i = 8;
+	int		j = -12;
+	int		k = 123456789;
+	int		l = 0;
+	int		m = -12345678;
+	char	*n = "abcdefghijklmnop";
+	char	*o = "-a";
+	char	*p = "-12";
+	char	*q = "0";
+	char	*r = "%%";
+	char	*s = "-2147483648";
+	char	*t = "0x12345678";
+	char	*u = "-0";
+	r2 = ft_printf("%0*x, %0*X, %0*u, %0*x, %0*X, %0*u, %0*x, %0*X\n",  a, c, a, c, a, d, a, d, a, d, a, e, a, e, a, e);
+	r2 = printf(    "%0*x, %0*X, %0*u, %0*x, %0*X, %0*u, %0*x, %0*X\n", a, c, a, c, a, d, a, d, a, d, a, e, a, e, a, e);
+	//r1 = ft_printf("%*u, %*x, %*X, %*u, %*x, %*X, %*u, %*x, %*X, %*u, %*x, %*X, %*u, %*x, %*X, %*u, %*x, %*X, %*u, %*x, %*X, %*u, %*x, %*X\n", a, i, a, i, a, i, a, j, a, j, a, j, a, k, a, k, a, k, a, l, a, l, a, l, a, m, a, m, a, m, a, c, a, c, a, c, a, d, a, d, a, d, a, e, a, e, a, e);
+	
+	/* 	r1 = ft_printf("%70p\n", &test);
 	r2 = printf("%70p\n", &test); */
-/* 	r1 = ft_printf("%7p\n", &test);
+	/* 	r1 = ft_printf("%7p\n", &test);
 	r2 = printf("%7p\n", &test); */
-/*
+	/*
 ft_printf("%.*p\n", -3, &test);
 	printf("%.*p\n", -3, &test); */
 	/* 	you are at test 7 of x flag  */

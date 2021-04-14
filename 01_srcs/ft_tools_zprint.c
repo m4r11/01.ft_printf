@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 11:39:56 by user              #+#    #+#             */
-/*   Updated: 2021/04/09 14:31:33 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/14 11:33:05 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void ft_putc(char c)
 {
 	write(1, &c, 1);
-	counter(1);
+	counter(1, 1);
 }
 
 void ft_putstr(char *str)

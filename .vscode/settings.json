@@ -14,6 +14,7 @@
         "string_view": "c",
         "unordered_map": "c",
         "vector": "c",
-        "ft_printf.h": "c"
+        "ft_printf.h": "c",
+        "algorithm": "c"
     }
 }

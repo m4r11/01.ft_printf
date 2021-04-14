@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/09 18:02:07 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/14 22:50:42 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ typedef struct s_dir_variables
 	int		has_zero;
 	int		dot;
 	int		q;
+	int		m;
 	int		min_c;
 	int		min;
 	int		start;
@@ -175,6 +176,14 @@ int		pad_left_c(int print, int to_pad, int min_c, int zero);
 int		format_c(int print, int to_pad, int min_c, int zero);
 
 /* di */
+int		ft_pad_left_minor_min_aux2(int print, int to_pad, int min_c);
+int		ft_pad_left_minor_min_aux1(int print, int to_pad, int min_c);
+int		padr_chrminmax2(int print, int to_pad, int min_c);
+int		ft_pad_left_putnbr_aux(int print, int to_pad, int min_c);
+int		padr_chrminmax(int print, int to_pad, int min_c);
+int 	padr_nozero_lessprint(int print, int to_pad, int min_c);
+int		padr_nomin_generic(int print, int to_pad, int min_c);
+int		padr_nomin_print0(int print, int to_pad, int min_c, int zero);
 int		ft_pad_right(int print, int to_pad, int min_c);
 int		ft_pad_left_no_min_no_zero(int print, int to_pad, int min_c);
 int		ft_pad_left_no_min_zero(int print, int to_pad, int min_c);
@@ -278,7 +287,7 @@ void	ft_putstr(char *str);
 char	ft_putstr_limit(char *str, int limit);
 char	*ft_strdup(const char *s1);
 int		ft_intlen(int);
-int		counter(int n);
+int		counter(int n, int reset);
 int		ft_arglen(char *search);
 int		ft_strlen(char *str);
 int		ft_tolower(int c);

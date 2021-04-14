@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 08:18:21 by user              #+#    #+#             */
-/*   Updated: 2021/04/09 14:32:03 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/14 22:48:07 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,20 @@ int	pad_left_s(char *print, int to_pad, int min_c)
 	}
 	if (min_c == -1)
 		return (put_string_pad_left(print, to_pad));
-	if (min_c > ft_strlen(print))
+	if (min_c > ft_strlen(print) && min_c > 0)
 		return (put_string_pad_left(print, to_pad));
-	print_x_times(to_pad - min_c, ' ');
+	if (to_pad < ft_strlen(print))
+	{
+		if (min_c > 0)
+			ft_putstr_limit(print, min_c);
+		else
+			ft_putstr(print);
+		return (0);
+	}
+	if (min_c > ft_strlen(print))
+		print_x_times(to_pad - min_c, ' ');
+	if (min_c <= ft_strlen(print))
+		print_x_times(to_pad - ft_strlen(print), ' ');
 	if (min_c > 0)
 		ft_putstr_limit(print, min_c);
 	else
@@ -81,9 +92,9 @@ int	pad_right_s(char *print, int to_pad, int min_c, int zero)
 			return (put_string_pad_right(print, to_pad));
 	}
 	if (to_pad < 0 && min_c > 0 && min_c <= ft_strlen(print))
-		return(put_string_pad_right_limit(print, (to_pad * -1),min_c));
+		return (put_string_pad_right_limit(print, (to_pad * -1), min_c));
 	if (min_c == 0 && zero == -3)
-		return(print_x_times((to_pad * -1) - min_c, ' '));
+		return (print_x_times((to_pad * -1) - min_c, ' '));
 	ft_putstr(print);
 	print_x_times((to_pad * -1) - ft_strlen(print), ' ');
 	return (0);
@@ -101,7 +112,7 @@ int	format_string(char *print, int to_pad, int min_c, int zero)
 		return (0);
 	if (to_pad == 0 && min_c < 0)
 	{
-		 ft_putstr(print);
+		ft_putstr(print);
 		return (0);
 	}
 	if (to_pad == 0 && min_c <= ft_strlen(print))
@@ -117,12 +128,13 @@ int	format_string(char *print, int to_pad, int min_c, int zero)
 int	print_str(char *input, int index, int has_format, va_list args2)
 {
 	t_dir_variables	var;
-	char	*print;	
-	
+	char			*print;
+
 	var.has_zero = ft_intstrchr(input, '0', index);
 	if (has_format == -1)
 	{
-		if (!(print = va_arg(args2, char *)))
+		print = va_arg(args2, char *);
+		if (!print)
 			print = "(null)";
 		ft_putstr(print);
 		return (ft_intstrchr_flag(input, 's', index));

@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 10:45:41 by user              #+#    #+#             */
-/*   Updated: 2021/04/09 18:51:03 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/14 19:10:45 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,10 @@ int ft_has_zero_x(t_dir_variables var)
         if (var.min_c > ft_xlen(var.q))
             return (ft_pad_left_x(var, (var.to_pad - var.min_c), ' '));
     }
-    if(var.q == 0)
+    if (var.q == 0)
         print_x_times(var.to_pad, '0');
+    if (var.q != 0)
+        return (ft_pad_left_x(var, (var.to_pad - ft_xlen(var.q)), ' '));
     return (0);
 }
 
@@ -76,4 +78,3 @@ int ft_pad_left_big_pad(t_dir_variables var)
     ft_put_x_up(var.q, var.min_c, var.flag);
     return (0);
 }
- 
