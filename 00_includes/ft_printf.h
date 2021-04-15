@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/14 22:50:42 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/15 18:17:27 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,7 @@ int		ft_is_hex(char *str);
 int		find_precision(char *dir, int start, va_list args2);
 
 /* c */
-int		print_c(char *input, int i, int has_format, va_list args2);
+int 	print_c(char *input, int i, int has_format, va_list args2);
 int    ft_pad_left_printc_after_zero(int print, int to_pad);
 int    ft_pad_left_printc_after(int print, int to_pad);
 int    ft_printc_pad_right(int print, int to_pad);
@@ -176,6 +176,13 @@ int		pad_left_c(int print, int to_pad, int min_c, int zero);
 int		format_c(int print, int to_pad, int min_c, int zero);
 
 /* di */
+int		ft_pad_left_negpad_aux(int print, int to_pad);
+int		ft_pad_left_putnbr_nomin_aux(int print, int to_pad);
+int		ft_pad_left_putnbr_zero_aux(int print, int to_pad, int min_c);
+int		ft_pad_left_putnbr_zero2_aux(int print, int to_pad, int min_c);
+int		ft_pad_left_bigger_pad_aux2(int print, int to_pad, int min_c);
+int		ft_pad_left_bigprint_min0(int print, int to_pad, int min_c);
+int 	ft_pad_left_bigger_pad_aux(int print, int to_pad, int min_c);
 int		ft_pad_left_minor_min_aux2(int print, int to_pad, int min_c);
 int		ft_pad_left_minor_min_aux1(int print, int to_pad, int min_c);
 int		padr_chrminmax2(int print, int to_pad, int min_c);
@@ -218,6 +225,7 @@ int		ft_edge_cases_p(long long print, int min_c);
 void	ft_min_c(long long print, int min_c, int len);
 
 /* u */
+int		ft_pad_left_u_aux(int print, int pad, int min_c);
 int		ft_pad_left_u(int print, int to_pad, int min_c, int zero);
 int		format_u(unsigned int print, int to_pad, int min_c,int zero);
 int		ft_pad_left_len_u(int print, int to_pad, int min_c, int c);

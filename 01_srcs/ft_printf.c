@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 22:11:39 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/14 11:33:19 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/15 17:35:28 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@
 
 #include "ft_printf.h"
 
-static fptrconv		g_converter [] = 
-	{
+static fptrconv		g_converter [] = {
 		&conv_dtoa,
 		&conv_itoa,
 		&conv_xtoa,

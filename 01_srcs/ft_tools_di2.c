@@ -6,13 +6,13 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 21:43:49 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/14 22:15:09 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/15 19:42:10 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../00_includes/ft_printf.h"
 
-int ft_pad_left_no_min_no_zero(int print, int to_pad, int min_c)
+int	ft_pad_left_no_min_no_zero(int print, int to_pad, int min_c)
 {
 	if (print == 0)
 	{
@@ -34,7 +34,7 @@ int ft_pad_left_no_min_no_zero(int print, int to_pad, int min_c)
 	return (ft_pad_left_putnbr(print, to_pad, min_c));
 }
 
-int ft_pad_left_minor_min_aux2(int print, int to_pad, int min_c)
+int	ft_pad_left_minor_min_aux2(int print, int to_pad, int min_c)
 {
 	if (print == INT_MIN)
 	{
@@ -59,7 +59,7 @@ int ft_pad_left_minor_min_aux2(int print, int to_pad, int min_c)
 	return (0);
 }
 
-int ft_pad_left_minor_min_aux1(int print, int to_pad, int min_c)
+int	ft_pad_left_minor_min_aux1(int print, int to_pad, int min_c)
 {
 	if (print == INT_MIN)
 	{
@@ -82,7 +82,7 @@ int ft_pad_left_minor_min_aux1(int print, int to_pad, int min_c)
 	return (0);
 }
 
-int ft_pad_left_minor_min(int print, int to_pad, int min_c)
+int	ft_pad_left_minor_min(int print, int to_pad, int min_c)
 {
 	if (print == 0)
 	{
@@ -109,10 +109,10 @@ int ft_pad_left_minor_min(int print, int to_pad, int min_c)
 	return (0);
 }
 
-void ft_putnbr_up(int print, int min_c)
+void	ft_putnbr_up(int print, int min_c)
 {
-	int len;
-	char *intmin;
+	int		len;
+	char	*intmin;
 
 	if (print <= INT_MAX && print >= INT_MIN)
 	{
@@ -127,13 +127,13 @@ void ft_putnbr_up(int print, int min_c)
 			ft_putstr(intmin);
 			if (min_c > 0)
 				print_x_times(min_c - ft_strlen(intmin), '0');
-			return;
+			return ;
 		}
 		len = ft_intlen(print);
 		if (min_c > 0 && print == 0)
 		{
 			print_x_times(min_c, '0');
-			return;
+			return ;
 		}
 		if (min_c > 0 && print != 0)
 		{
@@ -150,5 +150,5 @@ void ft_putnbr_up(int print, int min_c)
 		else
 			ft_putc(print + '0');
 	}
-	return;
+	return ;
 }

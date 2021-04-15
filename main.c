@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:40:48 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/14 20:53:51 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/15 19:37:46 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,8 +266,8 @@ printf(" %p %p \n", 1, -1); ft_printf(" %p %p \n", 1, -1); */
 	char	*s = "-2147483648";
 	char	*t = "0x12345678";
 	char	*u = "-0";
-	r2 = ft_printf("%0*x, %0*X, %0*u, %0*x, %0*X, %0*u, %0*x, %0*X\n",  a, c, a, c, a, d, a, d, a, d, a, e, a, e, a, e);
-	r2 = printf(    "%0*x, %0*X, %0*u, %0*x, %0*X, %0*u, %0*x, %0*X\n", a, c, a, c, a, d, a, d, a, d, a, e, a, e, a, e);
+	r2 = ft_printf("%0+8.3d\n", -8473);
+	r2 = printf("%0+8.3d\n", -8473);
 	//r1 = ft_printf("%*u, %*x, %*X, %*u, %*x, %*X, %*u, %*x, %*X, %*u, %*x, %*X, %*u, %*x, %*X, %*u, %*x, %*X, %*u, %*x, %*X, %*u, %*x, %*X\n", a, i, a, i, a, i, a, j, a, j, a, j, a, k, a, k, a, k, a, l, a, l, a, l, a, m, a, m, a, m, a, c, a, c, a, c, a, d, a, d, a, d, a, e, a, e, a, e);
 	
 	/* 	r1 = ft_printf("%70p\n", &test);

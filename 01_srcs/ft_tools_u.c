@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tools_c.c                                       :+:      :+:    :+:   */
+/*   ft_tools_u.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/08 18:27:50 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/15 17:37:03 by mvaldeta         ###   ########.fr       */
+/*   Created: 2021/04/15 16:58:39 by mvaldeta          #+#    #+#             */
+/*   Updated: 2021/04/15 17:03:06 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../00_includes/ft_printf.h"
 
-int	ft_pad_left_printc_after_zero(int print, int to_pad)
+int	ft_pad_left_u_aux(int print, int pad, int min_c)
 {
-	print_x_times(to_pad - 1, '0');
-	ft_putc(print);
-	return (0);
+	if (min_c < ft_u_intlen(print))
+		return (ft_pad_left_len_u(print, pad - ft_u_intlen(print), min_c, ' '));
+	else
+		return (ft_pad_left_len_u(print, pad - min_c, min_c, ' '));
 }
 
-int	ft_pad_left_printc_after(int print, int to_pad)
+int	ft_pad_left_len_u(int print, int to_pad, int min_c, int c)
 {
-	print_x_times(to_pad - 1, ' ');
-	ft_putc(print);
-	return (0);
-}
-
-int	ft_printc_pad_right(int print, int to_pad)
-{
-	ft_putc(print);
-	print_x_times(to_pad - 1, ' ');
+	print_x_times(to_pad, c);
+	ft_putnbr_u_up(print, min_c);
 	return (0);
 }
