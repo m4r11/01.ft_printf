@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/15 18:17:27 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/15 20:15:27 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,6 +176,8 @@ int		pad_left_c(int print, int to_pad, int min_c, int zero);
 int		format_c(int print, int to_pad, int min_c, int zero);
 
 /* di */
+void	ft_putbnr_intlim(int min_c);
+void	ft_aux_putnbr(int print, int min_c, int len);
 int		ft_pad_left_negpad_aux(int print, int to_pad);
 int		ft_pad_left_putnbr_nomin_aux(int print, int to_pad);
 int		ft_pad_left_putnbr_zero_aux(int print, int to_pad, int min_c);

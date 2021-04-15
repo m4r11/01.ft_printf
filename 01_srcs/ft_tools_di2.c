@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 21:43:49 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/15 19:42:10 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/15 20:28:00 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,44 +111,29 @@ int	ft_pad_left_minor_min(int print, int to_pad, int min_c)
 
 void	ft_putnbr_up(int print, int min_c)
 {
-	int		len;
-	char	*intmin;
-
-	if (print <= INT_MAX && print >= INT_MIN)
+	if (print < 0)
 	{
-		if (print < 0)
-		{
-			print *= -1;
-			ft_putc('-');
-		}
-		if (print == INT_MIN)
-		{
-			intmin = "2147483648";
-			ft_putstr(intmin);
-			if (min_c > 0)
-				print_x_times(min_c - ft_strlen(intmin), '0');
-			return ;
-		}
-		len = ft_intlen(print);
-		if (min_c > 0 && print == 0)
-		{
-			print_x_times(min_c, '0');
-			return ;
-		}
-		if (min_c > 0 && print != 0)
-		{
-			if (ft_intlen(print) == 1)
-				print_x_times(min_c - 1, '0');
-			else
-				print_x_times(min_c - len, '0');
-		}
-		if (print > 9)
-		{
-			ft_putnbr(print / 10);
-			ft_putnbr(print % 10);
-		}
-		else
-			ft_putc(print + '0');
+		print *= -1;
+		ft_putc('-');
 	}
+	if (print == INT_MIN)
+	{
+		ft_putbnr_intlim(min_c);
+		return ;
+	}
+	if (min_c > 0 && print == 0)
+	{
+		print_x_times(min_c, '0');
+		return ;
+	}
+	if (min_c > 0 && print != 0)
+		ft_aux_putnbr(print, min_c, ft_intlen(print));
+	if (print > 9)
+	{
+		ft_putnbr(print / 10);
+		ft_putnbr(print % 10);
+	}
+	else
+		ft_putc(print + '0');
 	return ;
 }
