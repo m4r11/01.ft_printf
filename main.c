@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:40:48 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/15 20:16:26 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/16 23:09:32 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 int main()
 {
-	int r1;
-	int r2;
 	/* 	ft_printf("******************************\n");
 	ft_printf("***         case c        ****\n");
 	ft_printf("******************************\n");
@@ -266,8 +264,12 @@ printf(" %p %p \n", 1, -1); ft_printf(" %p %p \n", 1, -1); */
 	char	*s = "-2147483648";
 	char	*t = "0x12345678";
 	char	*u = "-0";
-	r2 = ft_printf(" --0*%0*.0d*0 0*%0*.10d*0-- \n", -21, INT_MAX, 21, INT_MIN);
-	r2 = printf(" --0*%0*.0d*0 0*%0*.10d*0-- \n", -21, INT_MAX, 21, INT_MIN);
+	int r1;
+	int r2;
+	r1 = ft_printf("%-3x\n", 0);
+	r2 = printf("%-3x\n", 0);
+	printf("r1:%d\nr2:%d", r1, r2);
+	//r2 = printf("%-3x\n", 0);
 	//r1 = ft_printf("%*u, %*x, %*X, %*u, %*x, %*X, %*u, %*x, %*X, %*u, %*x, %*X, %*u, %*x, %*X, %*u, %*x, %*X, %*u, %*x, %*X, %*u, %*x, %*X\n", a, i, a, i, a, i, a, j, a, j, a, j, a, k, a, k, a, k, a, l, a, l, a, l, a, m, a, m, a, m, a, c, a, c, a, c, a, d, a, d, a, d, a, e, a, e, a, e);
 	
 	/* 	r1 = ft_printf("%70p\n", &test);

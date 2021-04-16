@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 18:18:24 by user              #+#    #+#             */
-/*   Updated: 2021/04/14 22:45:41 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/16 22:56:42 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	print_percent(char *input, int index, int has_format, va_list args2)
 	}
 	else
 	{
-		var.to_pad = find_width_c(input, index, args2);
+		var.to_pad = find_width(input, index, args2);
 		var.m = find_precision(input, ft_intstrchr(input, '.', index), args2);
 		var.has_zero = ft_zerochr(input, index);
 		c = '%';

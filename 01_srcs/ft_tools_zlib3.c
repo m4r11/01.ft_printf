@@ -6,11 +6,11 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 14:26:30 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/09 14:31:46 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/16 13:10:34 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../00_includes/ft_printf.h"
 
 static int	ft_ratoi(const char *str, int i)
 {
@@ -20,10 +20,10 @@ static int	ft_ratoi(const char *str, int i)
 	return (ft_ratoi(++str, i));
 }
 
-int			ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-	while (*str == ' ' || *str == '\n' || *str == '\t' || *str == '\v' ||
-	*str == '\f' || *str == '\r')
+	while (*str == ' ' || *str == '\n' || *str == '\t' || *str == '\v'
+		|| *str == '\f' || *str == '\r')
 		str++;
 	if (*str == '-')
 		return (-ft_ratoi(++str, 0));
@@ -32,10 +32,10 @@ int			ft_atoi(const char *str)
 	return (ft_ratoi(str, 0));
 }
 
-int			ft_simple_atoi(const char *str)
+int	ft_simple_atoi(const char *str)
 {
-	while (*str == ' ' || *str == '\n' || *str == '\t' || *str == '\v' ||
-	*str == '\f' || *str == '\r' || *str == '-')
+	while (*str == ' ' || *str == '\n' || *str == '\t' || *str == '\v'
+		|| *str == '\f' || *str == '\r' || *str == '-')
 		str++;
 	return (ft_ratoi(str, 0));
 }

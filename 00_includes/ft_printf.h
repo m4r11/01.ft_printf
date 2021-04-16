@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/15 20:15:27 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/16 22:47:32 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,25 @@ typedef struct s_struct
 	void	*kind;
 } t_struct;
 
+typedef struct s_search
+{
+	int			i;
+	int			j;
+	int			flag1_end;
+	int			percent1;
+	int			percent2;
+} t_search;
+
+typedef struct s_h
+{
+	long long	quotient;
+	long long	remainder;
+	char		*longmin;
+	int			len;
+	int			j;
+	
+} t_h;
+
 typedef struct s_type
 {
 	int		nbr;
@@ -210,6 +229,7 @@ int		format_string(char *print, int to_pad, int min_c, int zero);
 int		null_string(char *print, int to_pad, int min_c);
 int		pad_left_s(char *print, int to_pad, int min_c);
 int		pad_right_s(char *print, int to_pad, int min_c, int zero);
+int		pad_left_aux(char *print, int min_c);
 
 /* p */
 
@@ -225,7 +245,7 @@ void	ft_put_address(long long print);
 int		ft_hexlen(long print);
 int		ft_edge_cases_p(long long print, int min_c);
 void	ft_min_c(long long print, int min_c, int len);
-
+int	ft_edge_p_aux(int min_c, long long print);
 /* u */
 int		ft_pad_left_u_aux(int print, int pad, int min_c);
 int		ft_pad_left_u(int print, int to_pad, int min_c, int zero);
@@ -249,6 +269,10 @@ int		ft_no_minc_zero_x(t_dir_variables var);
 int		ft_pad_left_x(t_dir_variables var, int size,  int c);
 int		format_x(t_dir_variables var);
 void	ft_put_x_up(long print, int min_c, int width);
+int		edge_x(int flag, int min_c);
+int	x_zero(int min_c, long print);
+int	x_edge_0(int min_c, long print);
+void	printx(t_h *h, char *hexadecimal, int flag);
 
 /* X */
 
@@ -319,7 +343,16 @@ int		ft_intstrchr_flag(char *s, int c, int start);
 int		find_first_flag(char *input);
 int		print_the_middle(char *input, int flag1_end, char flag);
 int		find_width(char *dir, int start, va_list args2);
-
+int		find_flaghelp(t_search	aux, char *input);
+int		ft_fetch_width(va_list args2, int width);
+int		ft_get_width_atoi(char *dir, int start, int width);
+int		ft_get_width_atoi2(char *dir, int start, int width);
+int		ft_help_widthp(char *dir, int start, int width,  va_list args2);
+int		ft_help_width(char *dir, int start, int width, va_list args2);
+void	ft_put_longlimit(int flag);
+void	ft_put_x_helper(t_h h, long print, char *hexadecimal);
+void	handles_h(t_h *h, long print, char *hexadecimal);
+int 	ft_edge_p(long long print, int min_c);
 
 /*
 ** conv_numbers & other number related utilities 

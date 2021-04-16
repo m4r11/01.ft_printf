@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 21:26:13 by user              #+#    #+#             */
-/*   Updated: 2021/04/15 21:24:37 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/16 22:07:40 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,27 @@ void	ft_putbnr_intlim(int min_c)
 	return ;
 }
 
+void	handles_h(t_h *h, long print, char *hexadecimal)
+{
+	while (h->quotient != 0)
+	{
+		if (h->quotient < 0)
+			h->quotient = UINT_MAX - ((print * -1) - 1);
+		h->remainder = h->quotient % 16;
+		if (h->remainder < 10)
+			hexadecimal[h->j++] = 48 + h->remainder;
+		else
+			hexadecimal[h->j++] = 55 + h->remainder;
+		h->quotient = h->quotient / 16;
+	}
+}
+
 void	ft_put_address(long long print)
 {
-	long	quotient;
-	long	remainder;
-	char	hexadecimal[50];
-	int		j;
+	t_h			h;
+	char		hexadecimal[50];
 
-	j = 0;
+	h.j = 0;
 	if (print == (long)LONG_MIN)
 	{
 		ft_putstr("0x8000000000000000");
@@ -41,99 +54,51 @@ void	ft_put_address(long long print)
 		ft_putstr("0xffffffffffffffff");
 		return ;
 	}
-	quotient = print;
+	h.quotient = print;
 	ft_putc('0');
 	ft_putc('x');
-	if (quotient == 0)
+	if (h.quotient == 0)
 		ft_putc('0');
-	while (quotient != 0)
-	{
-		remainder = quotient % 16;
-		if (remainder < 10)
-			hexadecimal[j++] = 48 + remainder;
-		else
-			hexadecimal[j++] = 55 + remainder;
-		quotient = quotient / 16;
-	}
-	while (j-- > 0)
-		ft_putc(ft_tolower(hexadecimal[j]));
+	handles_h(&h, print, hexadecimal);
+	while (h.j-- > 0)
+		ft_putc(ft_tolower(hexadecimal[h.j]));
 	return ;
 }
 
 int	ft_hexlen(long print)
 {
-	long	quotient;
-	long	remainder;
-	char	hexadecimal[20];
-	int		j;
+	t_h			h;
+	char		hexadecimal[20];
 
 	if (print == 0)
 		return (3);
-	j = 0;
-	quotient = *(long *)&print;
-	if (quotient == 0)
+	h.j = 0;
+	h.quotient = *(long *)&print;
+	if (h.quotient == 0)
 	{
 		hexadecimal[0] = '0';
-		j += 1;
+		h.j += 1;
 	}
 	else
 	{
 		hexadecimal[0] = '0';
 		hexadecimal[1] = 'x';
-		j += 2;
+		h.j += 2;
 	}
-	while (quotient != 0)
-	{
-		remainder = quotient % 16;
-		if (remainder < 10)
-			hexadecimal[j++] = 48 + remainder;
-		else
-			hexadecimal[j++] = 55 + remainder;
-		quotient = quotient / 16;
-	}
-	return (j);
+	while (h.quotient != 0)
+		handles_h(&h, print, hexadecimal);
+	return (h.j);
 }
 
 int	ft_xlen(long print)
 {
-	long	quotient;
-	long	remainder;
-	char	hexadecimal[20];
-	int		j;
+	t_h			h;
+	char		hexadecimal[20];
 
 	if (print == 0)
 		return (3);
-	j = 0;
-	quotient = print;
-	while (quotient != 0)
-	{
-		if (quotient < 0)
-			quotient = UINT_MAX - ((print * -1) - 1);
-		remainder = quotient % 16;
-		if (remainder < 10)
-			hexadecimal[j++] = 48 + remainder;
-		else
-			hexadecimal[j++] = 55 + remainder;
-		quotient = quotient / 16;
-	}
+	h.j = 0;
+	h.quotient = print;
+	handles_h(&h, print, hexadecimal);
 	return (ft_is_hex(hexadecimal));
-}
-
-int	ft_is_hex(char *str)
-{
-	int	i;
-	int	c;
-
-	i = 0;
-	c = 0;
-	while (str[i] != '\0')
-	{
-		if (!(((str[i] >= 'A' && str[i] <= 'F')
-					|| (str[i] >= '0' && str[i] <= '9'))))
-			break ;
-		else
-			c++;
-		i++;
-	}
-	return (c);
 }

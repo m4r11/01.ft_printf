@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 10:45:41 by user              #+#    #+#             */
-/*   Updated: 2021/04/15 21:32:37 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/16 22:23:05 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 int	ft_has_zero_x(t_dir_variables var)
 {
-	if (var.min_c == 0 && var.q == 0)
+	if (var.m == 0 && var.q == 0)
 		return (print_x_times(var.to_pad - ft_intlen(var.q) + 1, ' '));
-	if (var.min_c == -1 && var.q != 0)
+	if (var.m == -1 && var.q != 0)
 	{
-		if (var.min_c < ft_xlen(var.q))
+		if (var.m < ft_xlen(var.q))
 			print_x_times(var.to_pad - ft_xlen(var.q), '0');
-		if (var.min_c > ft_xlen(var.q))
-			print_x_times(var.to_pad - var.min_c, '0');
-		ft_put_x_up(var.q, var.min_c, var.flag);
+		if (var.m > ft_xlen(var.q))
+			print_x_times(var.to_pad - var.m, '0');
+		ft_put_x_up(var.q, var.m, var.flag);
 		return (0);
 	}
-	if (var.min_c > 0 && var.q == 0)
-		return (ft_pad_left_x(var, (var.to_pad - var.min_c), ' '));
-	if (var.min_c > 0 && var.q != 0)
+	if (var.m > 0 && var.q == 0)
+		return (ft_pad_left_x(var, (var.to_pad - var.m), ' '));
+	if (var.m > 0 && var.q != 0)
 	{
-		if (var.min_c < ft_xlen(var.q))
+		if (var.m < ft_xlen(var.q))
 			return (ft_pad_left_x(var, (var.to_pad - ft_xlen(var.q)), ' '));
-		if (var.min_c > ft_xlen(var.q))
-			return (ft_pad_left_x(var, (var.to_pad - var.min_c), ' '));
+		if (var.m > ft_xlen(var.q))
+			return (ft_pad_left_x(var, (var.to_pad - var.m), ' '));
 	}
 	if (var.q == 0)
 		print_x_times(var.to_pad, '0');
@@ -67,14 +67,14 @@ int	ft_no_minc_one_zero_x(t_dir_variables var)
 
 int	ft_pad_left_big_pad(t_dir_variables var)
 {
-	if (ft_xlen(var.q) == 1 && var.min_c > 1)
-		return (ft_pad_left_x(var, (var.to_pad - var.min_c), ' '));
+	if (ft_xlen(var.q) == 1 && var.m > 1)
+		return (ft_pad_left_x(var, (var.to_pad - var.m), ' '));
 	if (var.q == 0)
-		return (ft_pad_left_x(var, (var.to_pad - var.min_c), ' '));
-	if (var.min_c < ft_xlen(var.q))
+		return (ft_pad_left_x(var, (var.to_pad - var.m), ' '));
+	if (var.m < ft_xlen(var.q))
 		return (ft_pad_left_x(var, (var.to_pad - ft_xlen(var.q)), ' '));
 	else
-		print_x_times(var.to_pad - var.min_c, ' ');
-	ft_put_x_up(var.q, var.min_c, var.flag);
+		print_x_times(var.to_pad - var.m, ' ');
+	ft_put_x_up(var.q, var.m, var.flag);
 	return (0);
 }

@@ -1,56 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tools_zprint.c                                  :+:      :+:    :+:   */
+/*   ft_tools_misc2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/24 11:39:56 by user              #+#    #+#             */
-/*   Updated: 2021/04/16 16:02:49 by mvaldeta         ###   ########.fr       */
+/*   Created: 2021/04/16 22:49:41 by mvaldeta          #+#    #+#             */
+/*   Updated: 2021/04/16 22:50:21 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../00_includes/ft_printf.h"
 
-void	ft_putc(char c)
+int	x_edge_0(int min_c, long print)
 {
-	write(1, &c, 1);
-	counter(1, 1);
-}
-
-void	ft_putstr(char *str)
-{
-	int	i;
-
-	i = 0;
-	while ((str[i]) != '\0')
-	{
-		ft_putc(str[i]);
-		++i;
-	}
-}
-
-char	ft_putstr_limit(char *str, int limit)
-{
-	int	i;
-
-	i = 0;
-	while (i < limit)
-	{
-		ft_putc(str[i]);
-		i++;
-	}
+	ft_putc('0');
+	if (min_c > 0 && print == 0)
+		print_x_times(min_c - 1, '0');
 	return (0);
 }
 
-char	print_x_times(int n, char c)
+void	printx(t_h *h, char *hexadecimal, int flag)
 {
-	if (n == 0)
-		return (0);
-	while (n > 0)
-	{
-		ft_putc(c);
-		n--;
-	}
-	return (0);
+	if (flag == 2)
+		ft_putc(ft_tolower(hexadecimal[h->j]));
+	if (flag == 3)
+		ft_putc(hexadecimal[h->j]);
 }

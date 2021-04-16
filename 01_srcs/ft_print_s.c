@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 08:18:21 by user              #+#    #+#             */
-/*   Updated: 2021/04/15 16:01:38 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/16 22:07:25 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 ** control after parse function in printf.c call the get_converter[func array]
 */
 
-#include "ft_printf.h"
+#include "../00_includes/ft_printf.h"
 
 int	null_string(char *print, int to_pad, int min_c)
 {
@@ -52,25 +52,16 @@ int	pad_left_s(char *print, int to_pad, int min_c)
 {
 	if (min_c == 0)
 		return (print_x_times(to_pad, ' '));
-	if (to_pad > min_c && min_c > 0)
-	{
-		if (min_c > ft_strlen(print))
-			return (put_string_pad_left(print, to_pad));
-		else
-			return (put_string_pad_left_limit(print, to_pad, min_c));
-	}
+	if (to_pad > min_c && min_c > 0 && min_c > ft_strlen(print))
+		return (put_string_pad_left(print, to_pad));
+	if (to_pad > min_c && min_c > 0 && min_c <= ft_strlen(print))
+		return (put_string_pad_left_limit(print, to_pad, min_c));
 	if (min_c == -1)
 		return (put_string_pad_left(print, to_pad));
 	if (min_c > ft_strlen(print) && min_c > 0)
 		return (put_string_pad_left(print, to_pad));
 	if (to_pad < ft_strlen(print))
-	{
-		if (min_c > 0)
-			ft_putstr_limit(print, min_c);
-		else
-			ft_putstr(print);
-		return (0);
-	}
+		return (pad_left_aux(print, min_c));
 	if (min_c > ft_strlen(print))
 		print_x_times(to_pad - min_c, ' ');
 	if (min_c <= ft_strlen(print))
@@ -142,9 +133,9 @@ int	print_str(char *input, int index, int has_format, va_list args2)
 	else
 	{
 		var.to_pad = find_width_c(input, index, args2);
-		var.min_c = find_precision(input, ft_intstrchr(input, '.', index), args2);
+		var.m = find_precision(input, ft_intstrchr(input, '.', index), args2);
 		print = va_arg(args2, char *);
-		format_string(print, var.to_pad, var.min_c, var.has_zero);
+		format_string(print, var.to_pad, var.m, var.has_zero);
 		return (ft_intstrchr_flag(input, 's', index));
 	}
 	return (FAIL);

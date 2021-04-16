@@ -6,17 +6,18 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 17:20:24 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/14 16:40:00 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/16 12:45:52 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../00_includes/ft_printf.h"
 
-int ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
+	int	x;
+
 	if (!str)
-		return(0);
-	int x;
+		return (0);
 	x = 0;
 	while (str[x] != '\0')
 	{
@@ -25,23 +26,24 @@ int ft_strlen(char *str)
 	return (x);
 }
 
-int ft_tolower(int c)
+int	ft_tolower(int c)
 {
 	if (c >= 'A' && c <= 'Z')
 		return (c - ('A' - 'a'));
 	return (c);
 }
 
-int ft_toupper(int c)
+int	ft_toupper(int c)
 {
 	if (c >= 'a' && c <= 'z')
 		return (c - ('a' - 'A'));
 	return (c);
 }
 
-int ft_intlen(int n)
+int	ft_intlen(int n)
 {
-	int len;
+	int	len;
+
 	len = 1;
 	if (n < 0)
 	{
@@ -50,25 +52,26 @@ int ft_intlen(int n)
 		while (n > 9)
 		{
 			len++;
-			n /=10;
+			n /= 10;
 		}
-		return(len);
+		return (len);
 	}
-	else 
+	else
 	{
 		while (n > 9)
 		{
 			len++;
-			n /=10;
+			n /= 10;
 		}
 		return (len);
 	}
-	return(-1);
+	return (-1);
 }
 
-int ft_u_intlen(unsigned int n)
+int	ft_u_intlen(unsigned int n)
 {
-	int len;
+	int	len;
+
 	len = 1;
 	if (n < 0)
 	{
@@ -77,19 +80,18 @@ int ft_u_intlen(unsigned int n)
 		while (n > 9)
 		{
 			len++;
-			n /=10;
+			n /= 10;
 		}
-		return(len);
+		return (len);
 	}
-	else 
+	else
 	{
 		while (n > 9)
 		{
 			len++;
-			n /=10;
+			n /= 10;
 		}
 		return (len);
 	}
-	return(-1);
+	return (-1);
 }
-

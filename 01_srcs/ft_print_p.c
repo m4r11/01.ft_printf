@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 12:00:12 by user              #+#    #+#             */
-/*   Updated: 2021/04/14 22:43:58 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/16 20:16:31 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 ** @103 aux print address function.
 */
 
-#include "ft_printf.h"
+#include "../00_includes/ft_printf.h"
 
 int	pad_left_p(long long print, int to_pad, int min_c, int zero)
 {
@@ -98,67 +98,6 @@ int	print_ptr(char *input, int index, int has_format, va_list args2)
 		return (ft_intstrchr_flag(input, 'p', index));
 	}
 	return (FAIL);
-}
-
-void	ft_put_address_up(long long print, int min_c)
-{
-	long long	quotient;
-	long long	remainder;
-	char		hexadecimal[100];
-	char		*longmin;
-	int			len;
-	int			j;
-
-	j = 0;
-	if (print == 0)
-	{
-		ft_putstr("0x0");
-		if (min_c > 0 && print == 0)
-			print_x_times(min_c - 3, '0');
-		return ;
-	}
-	if (print == 1)
-	{
-		ft_putstr("0x1");
-		if (min_c > 0 && print == 0)
-			print_x_times(min_c - 3, '0');
-		return ;
-	}
-	if (print == LONG_MIN)
-	{
-		longmin = "0x8000000000000000";
-		print_x_times(min_c - (ft_strlen(longmin)), '0');
-		ft_putstr(longmin);
-		return ;
-	}
-	if (print == UINT_MAX + 1)
-	{
-		ft_putc(' ');
-		return ;
-	}
-	quotient = print;
-	ft_putc('0');
-	ft_putc('x');
-	while (quotient != 0)
-	{
-		remainder = quotient % 16;
-		if (remainder < 10)
-			hexadecimal[j++] = 48 + remainder;
-		else
-			hexadecimal[j++] = 55 + remainder;
-		quotient = quotient / 16;
-	}
-	len = ft_is_hex(hexadecimal);
-	if (min_c > 0 && print != 0)
-	{
-		if (ft_intlen(print) == 1)
-			print_x_times(min_c - 1, '0');
-		else
-			print_x_times(min_c - len, '0');
-	}
-	while (j-- > 0)
-		ft_putc(ft_tolower(hexadecimal[j]));
-	return ;
 }
 
 /* handy & usefull copy paste costume debug:
